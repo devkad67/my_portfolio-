@@ -1,0 +1,160 @@
+/* global.css - Jones Stack Paradigm */
+
+:root {
+  /* Light Theme Variables */
+  --bg-color: #FFFFFF;
+  --bg-secondary: #F8F9FA;
+  --text-primary: #1A1A1A;
+  --text-secondary: #4A5568;
+  --accent-color: #0F172A; /* Deep Navy/Slate */
+  --accent-hover: #334155;
+  --highlight-color: #2563EB; /* Royal Blue for Subtopics */
+  --card-border: #E2E8F0;
+
+  --font-sans: 'Inter', system-ui, sans-serif;
+  
+  --radius-sm: 0.5rem;
+  --radius-md: 0.75rem;
+  --radius-lg: 1rem;
+}
+
+[data-theme="dark"] {
+  --bg-color: #0F172A; /* Slate 900 */
+  --bg-secondary: #1E293B; /* Slate 800 */
+  --text-primary: #F8FAFC;
+  --text-secondary: #94A3B8;
+  --accent-color: #FFFFFF;
+  --accent-hover: #E2E8F0;
+  --highlight-color: #60A5FA; /* Soft Blue for Subtopics */
+  --card-border: #334155;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+* { margin: 0; padding: 0; }
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--bg-color);
+  color: var(--text-primary);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  min-height: 100vh;
+}
+
+img, picture, video, canvas, svg { display: block; max-width: 100%; }
+input, button, textarea, select { font: inherit; }
+p, h1, h2, h3, h4, h5, h6 { overflow-wrap: break-word; }
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 700;
+  line-height: 1.2;
+  color: var(--text-primary);
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* Utilities */
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+.section {
+  padding: 6rem 0;
+  border-bottom: 1px solid var(--card-border);
+}
+.section:last-child {
+  border-bottom: none;
+}
+
+.section-title {
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  display: flex;
+  align-items: center;
+  color: var(--highlight-color);
+}
+
+/* Theme Toggle Button */
+.theme-toggle {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  color: var(--text-secondary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem;
+  border-radius: 50%;
+  transition: all 0.2s ease;
+}
+.theme-toggle:hover {
+  background: var(--bg-secondary);
+  color: var(--text-primary);
+}
+
+/* Base Buttons */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  border-radius: var(--radius-md);
+  font-weight: 500;
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+.btn-primary {
+  background-color: var(--accent-color);
+  color: var(--bg-color);
+  border: 1px solid var(--accent-color);
+}
+.btn-primary:hover {
+  background-color: var(--bg-color);
+  color: var(--accent-color);
+}
+
+.btn-outline {
+  background-color: transparent;
+  color: var(--text-primary);
+  border: 1px solid var(--card-border);
+}
+.btn-outline:hover {
+  background-color: var(--bg-secondary);
+  border-color: var(--text-secondary);
+}
+
+/* --- Global Micro-Animations --- */
+
+@keyframes heroFadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Hero immediate fade-ins */
+.hero-title, .hero-subtitle, .hero-actions, .greeting {
+  animation: heroFadeIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  opacity: 0;
+}
+.greeting { animation-delay: 0ms; }
+.hero-title { animation-delay: 150ms; }
+.hero-subtitle { animation-delay: 300ms; }
+.hero-actions { animation-delay: 450ms; }
+
+/* Scroll Reveal Classes */
+.reveal-up {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+.reveal-up.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}

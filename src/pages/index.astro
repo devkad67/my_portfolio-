@@ -1,0 +1,555 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { Image } from 'astro:assets';
+import profileImage from '../assets/me.png';
+
+const projects = [
+  {
+    title: "Real Estate",
+    description: "A modern real estate platform for browsing, listing, and managing property listings. Built with a focus on clean UI, smooth filtering, and a seamless user experience for both buyers and agents.",
+    link: "#",
+    linkText: "View Project"
+  },
+  {
+    title: "Campus Marketplace",
+    description: "A peer-to-peer marketplace designed for university students to buy, sell, and trade items within their campus community. Features real-time listings and a secure messaging interface.",
+    link: "#",
+    linkText: "View Project"
+  },
+  {
+    title: "FormFlow",
+    description: "A developer-friendly form builder and submission handler. Enables teams to create, manage, and analyze form data without writing backend code, inspired by improving the developer workflow.",
+    link: "#",
+    linkText: "View Project"
+  }
+];
+
+const skillCategories = [
+  {
+    title: "Frontend Engineering",
+    skills: ["React", "Next.js", "Astro", "Vue.js", "TypeScript", "JavaScript", "TailwindCSS", "Vanilla CSS"]
+  },
+  {
+    title: "Backend & Database",
+    skills: ["Node.js", "Express", "PostgreSQL", "MongoDB", "REST APIs", "GraphQL"]
+  },
+  {
+    title: "Tools & Architecture",
+    skills: ["Git & GitHub", "Figma (UI/UX)", "Vercel", "Docker", "Jest", "CI/CD Pipelines"]
+  }
+];
+---
+
+<BaseLayout title="dev_kad | Junior Design Engineer">
+  
+  <!-- Hero Section -->
+  <section class="section hero-section container">
+    <p class="greeting">Hi, I'm dev_kad.</p>
+    <h1 class="hero-title">
+      I craft fast, scalable applications using <br class="desktop-br"/> 
+      <span class="hero-highlight">React, TypeScript, Astro, and Node.js.</span>
+    </h1>
+    <p class="hero-subtitle">
+      A junior design engineer passionate about building fast, beautiful web applications. I specialize in the intersection of rigorous technical implementation and intentional design.
+    </p>
+    <div class="hero-stats">
+      <div class="stat-item">
+        <span class="stat-number">3+</span>
+        <span class="stat-label">Years Experience</span>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat-item">
+        <span class="stat-number">3</span>
+        <span class="stat-label">Projects Built</span>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat-item">
+        <span class="stat-number">∞</span>
+        <span class="stat-label">Lines of CSS</span>
+      </div>
+    </div>
+    <div class="hero-actions">
+      <a href="#projects" class="btn btn-primary">View my projects</a>
+      <a href="#contact" class="btn btn-outline">Let's connect</a>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section id="about" class="section container">
+    <h2 class="section-title">The Engineer Behind the Code</h2>
+    <div class="about-flex">
+      <div class="about-image-wrapper">
+        <Image src={profileImage} alt="dev_kad" class="profile-image" />
+      </div>
+      <div class="prose">
+        <p>
+          I'm a Software Engineer based in Ghana, trained in Information Technology and ready to bring thoughtful, high-quality code to my first professional role. I don't just stack divs — I think deeply about state management, semantic structure, accessibility, and rendering performance, because how code is built matters as much as what it does.
+        </p>
+        <p>
+          I've spent time mastering React, Next.js, TypeScript, and Node.js, and I've learned how to work effectively in remote, distributed team environments even before landing my first job. My focus is on writing maintainable, scalable code, optimizing performance, and creating clean architectures that make developers' lives easier.
+        </p>
+        <p>
+          I may be early in my career, but I build like I've been doing it for years. I'm not looking for just any role — I'm looking for a team where I can deliver real value from day one.
+        </p>
+      </div>
+    </div>
+
+    <!-- Why Work With Me — full width below the image/text -->
+    <div class="why-section">
+      <h3 class="why-title">Why Work With Me</h3>
+      <div class="grid-2col">
+        <div>
+          <h4>Proven Track Record</h4>
+          <p>Delivering high-impact solutions that scale, consistently driving ROI and user retention.</p>
+        </div>
+        <div>
+          <h4>Full-Stack Expertise</h4>
+          <p>End-to-end development capabilities from interactive frontends to robust Node.js backends.</p>
+        </div>
+        <div>
+          <h4>Quality & Security First</h4>
+          <p>Enterprise-grade security practices, comprehensive testing, and resilient code quality.</p>
+        </div>
+        <div>
+          <h4>Business Impact Focus</h4>
+          <p>Not just code—solutions that drive real business results through performance and UI improvements.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Experience Section -->
+  <section id="experience" class="section container bg-secondary-wrap">
+    <h2 class="section-title">Experience</h2>
+    <p class="section-lead">My professional engineering journey.</p>
+
+    <div class="timeline">
+      <div class="timeline-item">
+        <h3 class="timeline-title">Independent Development</h3>
+        <span class="timeline-company">Self-Taught Origins</span>
+        <span class="timeline-date">2019 — Present</span>
+        <p>Started building the web by viewing page source and reverse-engineering CSS. Evolved into building full-stack applications and contributing to open-source UI libraries.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Education Section -->
+  <section id="education" class="section container">
+    <h2 class="section-title">Education</h2>
+    <p class="section-lead">My academic background and foundational training.</p>
+
+    <div class="timeline">
+      <div class="timeline-item">
+        <h3 class="timeline-title">BSc in Information Technology</h3>
+        <span class="timeline-company">Accra Technical University</span>
+        <span class="timeline-date">2022 — 2026</span>
+        <p>Developing a strong foundation in modern software engineering, system architecture, and interactive design principles. Focused on translating complex technical concepts into scalable frontend solutions.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Work/Projects Section -->
+  <section id="projects" class="section container">
+    <h2 class="section-title">Selected Projects</h2>
+    <p class="section-lead">Some of the high-impact projects I've built and engineered.</p>
+
+    <div class="projects-grid">
+      {projects.map(project => (
+        <div class="project-card">
+          <h3 class="project-title">{project.title}</h3>
+          <p class="project-desc">{project.description}</p>
+          <a href={project.link} class="project-link">{project.linkText} &rarr;</a>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <!-- Skills Section -->
+  <section id="skills" class="section container">
+    <h2 class="section-title">Skills & Technologies</h2>
+    <p class="section-lead">Complete expertise strategically categorized across the stack.</p>
+    
+    <div class="skills-grid">
+      {skillCategories.map(category => (
+        <div class="skill-category">
+          <h3 class="skill-category-title">{category.title}</h3>
+          <div class="skills-flex">
+            {category.skills.map(skill => (
+              <span class="skill-tag">{skill}</span>
+            ))}
+          </div>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="section container">
+    <h2 class="section-title">Let's Connect</h2>
+    <p class="section-lead">Whether you have a project in mind or just want to chat about technology, I'd love to hear from you. Let's turn your vision into reality.</p>
+    
+    <div class="contact-links mt-4">
+      <a href="mailto:example@gmail.com" class="btn btn-primary">
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+        Email Me
+      </a>
+      <a href="https://github.com/Kelvinatsu" target="_blank" rel="noopener noreferrer" class="btn btn-outline">
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.2c3-.3 6-1.5 6-8.5a6.5 6.5 0 0 0-1.9-4.5 5.8 5.8 0 0 0-.2-4.5s-1.5-.5-4.4 2a15.2 15.2 0 0 0-8 0c-2.9-2.5-4.4-2-4.4-2a5.8 5.8 0 0 0-.2 4.5 6.5 6.5 0 0 0-1.9 4.5c0 7 3 8.2 6 8.5a4.8 4.8 0 0 0-1 3.2v4"></path><path d="M9 18c-4.5 1.6-5-2.5-5-2.5"></path></svg>
+        GitHub
+      </a>
+      <a href="https://www.linkedin.com/in/kaddev" target="_blank" rel="noopener noreferrer" class="btn btn-outline">
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+        LinkedIn
+      </a>
+    </div>
+  </section>
+
+  <style>
+    /* Hero Section */
+    .hero-section {
+      padding: 10rem 0 7rem;
+    }
+    .greeting {
+      font-size: 1.25rem;
+      font-weight: 500;
+      color: var(--text-secondary);
+      margin-bottom: 2rem;
+    }
+    .hero-title {
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      margin-bottom: 2rem;
+      letter-spacing: -0.01em;
+      color: var(--highlight-color);
+      text-transform: uppercase;
+      font-weight: 800;
+    }
+    .hero-highlight {
+      color: var(--highlight-color);
+    }
+    .hero-subtitle {
+      font-size: 1.25rem;
+      color: var(--text-secondary);
+      max-width: 700px;
+      margin-bottom: 2rem;
+      line-height: 1.8;
+    }
+    .hero-stats {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      margin-bottom: 2.5rem;
+      flex-wrap: wrap;
+    }
+    .stat-item {
+      display: flex;
+      flex-direction: column;
+    }
+    .stat-number {
+      font-size: 1.8rem;
+      font-weight: 800;
+      color: var(--highlight-color);
+      line-height: 1;
+    }
+    .stat-label {
+      font-size: 0.8rem;
+      color: var(--text-secondary);
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-top: 0.25rem;
+    }
+    .stat-divider {
+      width: 1px;
+      height: 2.5rem;
+      background-color: var(--card-border);
+    }
+    .hero-actions {
+      display: flex;
+      gap: 1rem;
+    }
+    @media (max-width: 768px) {
+      .desktop-br { display: none; }
+      .hero-actions { flex-direction: column; }
+      .hero-actions .btn { width: 100%; justify-content: center; }
+    }
+
+    .section-lead {
+      color: var(--text-secondary);
+      font-size: 1.1rem;
+      margin-top: -1rem;
+      margin-bottom: 4rem;
+    }
+
+    /* About image */
+    .about-flex {
+      display: flex;
+      flex-direction: column;
+      gap: 4rem;
+    }
+    @media (min-width: 768px) {
+      .about-flex {
+        flex-direction: row;
+        align-items: flex-start;
+        gap: 5rem;
+      }
+    }
+    .about-image-wrapper {
+      flex-shrink: 0;
+      width: 100%;
+      max-width: 420px;
+      position: relative;
+      opacity: 1; /* Ensure visible, overriding any global fade */
+      animation: floatImage 6s ease-in-out 0.6s infinite;
+    }
+
+    /* Decorative background accent behind picture */
+    .about-image-wrapper::before {
+      content: '';
+      position: absolute;
+      inset: -8px;
+      border-radius: calc(var(--radius-lg) + 8px);
+      background: linear-gradient(135deg, var(--highlight-color), transparent 60%);
+      opacity: 0.15;
+      z-index: 0;
+      transition: opacity 0.4s ease;
+    }
+    .about-image-wrapper:hover::before {
+      opacity: 0.3;
+    }
+
+    @keyframes floatImage {
+      0%   { transform: translateY(0px); }
+      50%  { transform: translateY(-12px); }
+      100% { transform: translateY(0px); }
+    }
+
+    .profile-image {
+      width: 100%;
+      height: 100%;
+      min-height: 500px;
+      aspect-ratio: 3 / 4;
+      border-radius: var(--radius-lg);
+      object-fit: cover;
+      border: 1px solid var(--card-border);
+      box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);
+      position: relative;
+      z-index: 1;
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+    }
+    .about-image-wrapper:hover .profile-image {
+      transform: scale(1.02);
+      box-shadow: 0 20px 60px -12px rgba(37, 99, 235, 0.25);
+    }
+
+    /* Grid layout */
+    .grid-2col {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 2.5rem;
+      margin-top: 2.5rem;
+    }
+    @media (min-width: 768px) {
+      .grid-2col { grid-template-columns: 1fr 1fr; }
+    }
+    .grid-2col h4 {
+      font-size: 1.1rem;
+      margin-bottom: 0.75rem;
+      color: var(--highlight-color);
+    }
+    .grid-2col p {
+      color: var(--text-secondary);
+      font-size: 0.95rem;
+      line-height: 1.7;
+    }
+    .prose p {
+      margin-bottom: 1.75rem;
+      color: var(--text-secondary);
+      font-size: 1.1rem;
+      line-height: 1.8;
+    }
+    .prose h3 {
+      margin-top: 3rem;
+      margin-bottom: 1rem;
+      font-size: 1.5rem;
+      color: var(--highlight-color);
+    }
+
+    /* Why Work With Me */
+    .why-section {
+      margin-top: 4rem;
+      padding-top: 3rem;
+      border-top: 1px solid var(--card-border);
+    }
+    .why-title {
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: var(--highlight-color);
+      margin-bottom: 2.5rem;
+    }
+
+    /* Timeline */
+    .timeline {
+      display: flex;
+      flex-direction: column;
+      gap: 3.5rem;
+    }
+    .timeline-item {
+      display: flex;
+      flex-direction: column;
+      padding-left: 1.5rem;
+      border-left: 2px solid var(--card-border);
+    }
+    .timeline-title {
+      font-size: 1.3rem;
+      margin-bottom: 0.4rem;
+    }
+    .timeline-company {
+      font-weight: 500;
+      color: var(--highlight-color);
+      margin-bottom: 0.25rem;
+    }
+    .timeline-date {
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+      margin-bottom: 1rem;
+    }
+    .timeline-item p {
+      color: var(--text-secondary);
+      line-height: 1.6;
+    }
+
+    /* Project Cards */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2rem;
+    }
+    .project-card {
+      padding: 2.5rem;
+      border: 1px solid var(--card-border);
+      border-radius: var(--radius-lg);
+      background-color: var(--bg-color);
+      transition: box-shadow 0.2s ease, transform 0.2s ease;
+      aspect-ratio: 1 / 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .project-card:hover {
+      box-shadow: 0 10px 30px -10px rgba(0,0,0,0.1);
+      transform: translateY(-2px);
+    }
+    [data-theme="dark"] .project-card:hover {
+      box-shadow: 0 10px 30px -10px rgba(0,0,0,0.5);
+    }
+    .project-title {
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+    }
+    .project-desc {
+      color: var(--text-secondary);
+      margin-bottom: 1.5rem;
+    }
+    .project-link {
+      font-weight: 500;
+      color: var(--accent-color);
+      display: inline-flex;
+      align-items: center;
+    }
+    .project-link:hover {
+      text-decoration: underline;
+    }
+
+    /* Skills */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 2.5rem;
+    }
+    @media (min-width: 768px) {
+      .skills-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+    .skill-category-title {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--highlight-color);
+      margin-bottom: 1rem;
+      border-bottom: 1px solid var(--card-border);
+      padding-bottom: 0.5rem;
+    }
+    .skills-flex {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+    }
+    .skill-tag {
+      padding: 0.4rem 0.8rem;
+      background-color: var(--bg-secondary);
+      border: 1px solid var(--card-border);
+      border-radius: 99px;
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: var(--text-secondary);
+      transition: all 0.2s ease;
+    }
+    .skill-tag:hover {
+      background-color: var(--bg-color);
+      color: var(--text-primary);
+      border-color: var(--text-secondary);
+    }
+
+    .mt-4 { margin-top: 2rem; }
+    .contact-links {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    /* === COMPREHENSIVE RESPONSIVE STYLES === */
+    @media (max-width: 767px) {
+      /* Hero */
+      .hero-section { padding: 4rem 0 3rem; }
+      .hero-title { font-size: clamp(2rem, 8vw, 2.8rem); }
+      .greeting { font-size: 1rem; }
+      .hero-subtitle { font-size: 1rem; }
+      .hero-actions { flex-direction: column; }
+      .hero-actions .btn { width: 100%; justify-content: center; }
+
+      /* About: stack image above text on mobile */
+      .about-flex { flex-direction: column; }
+      .about-image-wrapper { max-width: 100%; }
+      .profile-image { min-height: 320px; aspect-ratio: 4 / 3; }
+
+      /* Section general */
+      .section { padding: 3rem 0; }
+      .section-title { font-size: 1.6rem; }
+      .section-lead { font-size: 1rem; }
+
+      /* Grid collapses to single col */
+      .grid-2col { grid-template-columns: 1fr; }
+
+      /* Timeline */
+      .timeline { gap: 2rem; }
+
+      /* Projects */
+      .project-card { padding: 1.25rem; }
+      .project-title { font-size: 1.2rem; }
+
+      /* Skills */
+      .skills-grid { grid-template-columns: 1fr; }
+
+      /* Contact */
+      .contact-links { flex-direction: column; }
+      .contact-links .btn { width: 100%; justify-content: center; }
+    }
+
+    /* Tablet tweaks */
+    @media (min-width: 768px) and (max-width: 1024px) {
+      .hero-title { font-size: clamp(2.2rem, 4vw, 3.2rem); }
+      .about-image-wrapper { max-width: 300px; }
+      .skills-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+  </style>
+</BaseLayout>
