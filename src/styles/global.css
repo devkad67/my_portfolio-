@@ -12,6 +12,8 @@
   --card-border: #E2E8F0;
 
   --font-sans: 'Inter', system-ui, sans-serif;
+  --bg-color-rgb: 255, 255, 255;
+  --bg-secondary-rgb: 248, 249, 250;
   
   --radius-sm: 0.5rem;
   --radius-md: 0.75rem;
@@ -28,6 +30,8 @@
 [data-theme="dark"] {
   --bg-color: #0F172A; /* Slate 900 */
   --bg-secondary: #1E293B; /* Slate 800 */
+  --bg-color-rgb: 15, 23, 42;
+  --bg-secondary-rgb: 30, 41, 59;
   --text-primary: #F8FAFC;
   --text-secondary: #94A3B8;
   --accent-color: #FFFFFF;
