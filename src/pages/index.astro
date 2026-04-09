@@ -216,7 +216,8 @@ const skillCategories = [
   <style>
     /* Hero Section */
     .hero-section {
-      padding: 7rem 0 5rem;
+      padding-top: 7rem;
+      padding-bottom: 5rem;
       display: grid;
       gap: 2rem;
       max-width: 1180px;
@@ -283,36 +284,34 @@ const skillCategories = [
       max-width: 760px;
     }
     .hero-stats {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-      gap: 1rem;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 2rem;
       margin-bottom: 2.5rem;
     }
     .stat-item {
       display: flex;
       flex-direction: column;
-      padding: 1.25rem;
-      border-radius: var(--radius-lg);
-      background-color: var(--bg-secondary);
-      border: 1px solid var(--card-border);
-      min-width: 0;
     }
     .stat-number {
-      font-size: 1.85rem;
+      font-size: 2.2rem;
       font-weight: 800;
       color: var(--highlight-color);
       line-height: 1;
     }
     .stat-label {
-      font-size: 0.75rem;
+      font-size: 0.85rem;
       color: var(--text-secondary);
       font-weight: 700;
       text-transform: uppercase;
-      letter-spacing: 0.12em;
-      margin-top: 0.35rem;
+      letter-spacing: 0.1em;
+      margin-top: 0.4rem;
     }
     .stat-divider {
-      display: none;
+      width: 2px;
+      height: 3rem;
+      background-color: var(--card-border);
     }
     .hero-actions {
       display: flex;
@@ -395,8 +394,9 @@ const skillCategories = [
         display: none;
       }
       .hero-title {
-        font-size: clamp(1.8rem, 9vw, 2.4rem);
+        font-size: clamp(1.4rem, 8vw, 1.95rem);
         max-width: 100%;
+        line-height: 1.2;
       }
       .hero-subtitle {
         font-size: 0.98rem;
@@ -420,11 +420,15 @@ const skillCategories = [
         font-size: 0.95rem;
       }
       .hero-stats {
-        gap: 0.75rem;
+        gap: 1.5rem;
         margin-bottom: 1.75rem;
+        justify-content: center;
       }
-      .stat-item {
-        padding: 1rem;
+      .stat-divider {
+        display: none;
+      }
+      .stat-number {
+        font-size: 1.75rem;
       }
     }
 
@@ -731,7 +735,7 @@ const skillCategories = [
     /* === COMPREHENSIVE RESPONSIVE STYLES === */
     @media (max-width: 767px) {
       /* Hero */
-      .hero-section { padding: 4rem 0 3rem; }
+      .hero-section { padding-top: 4rem; padding-bottom: 3rem; }
       .hero-title { font-size: clamp(2rem, 8vw, 2.8rem); }
       .greeting { font-size: 1rem; }
       .hero-subtitle { font-size: 1rem; }
@@ -744,9 +748,9 @@ const skillCategories = [
       .profile-image { min-height: 320px; aspect-ratio: 4 / 3; }
 
       /* Section general */
-      .section { padding: 3rem 0; }
-      .section-title { font-size: 1.6rem; }
-      .section-lead { font-size: 1rem; }
+      .section { padding-top: 3rem; padding-bottom: 3rem; }
+      .section-title { font-size: 1.4rem; padding-right: 0.5rem; }
+      .section-lead { font-size: 0.95rem; padding-right: 0.5rem; }
 
       /* Grid collapses to single col */
       .grid-2col { grid-template-columns: 1fr; }
