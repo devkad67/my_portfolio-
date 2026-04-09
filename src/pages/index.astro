@@ -72,6 +72,15 @@ const skillCategories = [
       <a href="#projects" class="btn btn-primary">View my projects</a>
       <a href="#contact" class="btn btn-outline">Let's connect</a>
     </div>
+
+    <div class="hero-callout">
+      <span class="hero-callout-badge">Featured project</span>
+      <div class="hero-callout-copy">
+        <p class="hero-callout-title">Campus Marketplace</p>
+        <p>Fast campus commerce built to connect students with quick item exchange, secure messaging, and frictionless onboarding.</p>
+      </div>
+      <a href="#projects" class="hero-callout-link">Explore projects &rarr;</a>
+    </div>
   </section>
 
   <!-- About Section -->
@@ -211,6 +220,34 @@ const skillCategories = [
       display: grid;
       gap: 2rem;
       max-width: 1180px;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-section::before,
+    .hero-section::after {
+      content: '';
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(40px);
+      opacity: 0.55;
+      pointer-events: none;
+      transform-origin: center;
+    }
+    .hero-section::before {
+      width: 260px;
+      height: 260px;
+      top: -50px;
+      right: -90px;
+      background: rgba(37, 99, 235, 0.26);
+      animation: floatAccent 12s ease-in-out infinite;
+    }
+    .hero-section::after {
+      width: 320px;
+      height: 320px;
+      bottom: -90px;
+      left: -80px;
+      background: rgba(37, 99, 235, 0.16);
+      animation: floatAccent 16s ease-in-out infinite reverse;
     }
     .greeting {
       font-size: 1.15rem;
@@ -281,10 +318,62 @@ const skillCategories = [
     .hero-actions .btn {
       min-width: 180px;
     }
+    .hero-callout {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      margin-top: 1rem;
+      padding: 1.25rem 1.5rem;
+      border-radius: var(--radius-lg);
+      background: rgba(255, 255, 255, 0.92);
+      border: 1px solid rgba(37, 99, 235, 0.14);
+      box-shadow: 0 24px 60px rgba(15, 23, 42, 0.08);
+      backdrop-filter: blur(14px);
+      position: relative;
+      z-index: 1;
+    }
+    .hero-callout-badge {
+      padding: 0.5rem 0.85rem;
+      border-radius: 999px;
+      background: var(--highlight-color);
+      color: var(--bg-color);
+      text-transform: uppercase;
+      font-weight: 700;
+      font-size: 0.75rem;
+      letter-spacing: 0.1em;
+    }
+    .hero-callout-copy {
+      flex: 1;
+      min-width: 260px;
+    }
+    .hero-callout-title {
+      font-size: 1rem;
+      font-weight: 700;
+      margin-bottom: 0.35rem;
+      color: var(--text-primary);
+    }
+    .hero-callout-copy p {
+      color: var(--text-secondary);
+      margin: 0;
+      line-height: 1.7;
+    }
+    .hero-callout-link {
+      color: var(--accent-color);
+      font-weight: 700;
+      transition: color 0.2s ease;
+    }
+    .hero-callout-link:hover {
+      color: var(--highlight-color);
+      text-decoration: underline;
+    }
     @media (max-width: 768px) {
       .desktop-br { display: none; }
       .hero-actions { flex-direction: column; }
       .hero-actions .btn { width: 100%; justify-content: center; }
+      .hero-callout { flex-direction: column; align-items: stretch; }
+      .hero-callout-link { margin-left: 0; }
     }
 
     .section-lead {
