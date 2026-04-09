@@ -630,6 +630,272 @@ img {
 }
 
 /* ============================================= 
+   ENHANCED SCROLL ANIMATIONS
+   ============================================= */
+
+/* Fade in from left */
+.fade-in-left {
+  opacity: 0;
+  transform: translateX(-30px);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), 
+              transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.fade-in-left.is-visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Fade in from right */
+.fade-in-right {
+  opacity: 0;
+  transform: translateX(30px);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), 
+              transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.fade-in-right.is-visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Stagger animation delay for lists */
+.stagger-delay-1 { --stagger: 100ms; }
+.stagger-delay-2 { --stagger: 200ms; }
+.stagger-delay-3 { --stagger: 300ms; }
+.stagger-delay-4 { --stagger: 400ms; }
+.stagger-delay-5 { --stagger: 500ms; }
+
+.reveal-up.is-visible,
+.fade-in-left.is-visible,
+.fade-in-right.is-visible {
+  transition-delay: var(--stagger, 0ms);
+}
+
+/* ============================================= 
+   ENHANCED STICKY HEADER
+   ============================================= */
+
+/* Header shadow on scroll */
+.app-header.scrolled {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+[data-theme="dark"] .app-header.scrolled {
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.3);
+}
+
+/* Header slide up animation */
+.app-header.hide {
+  transform: translateY(-100%);
+  transition: transform 0.3s ease;
+}
+
+.app-header.show {
+  transform: translateY(0);
+  transition: transform 0.3s ease;
+}
+
+/* ============================================= 
+   SMOOTH SCROLL & FOCUS STYLES
+   ============================================= */
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* Better focus visible for keyboard navigation */
+:focus-visible {
+  outline: 2px solid var(--highlight-color);
+  outline-offset: 2px;
+  border-radius: var(--radius-md);
+}
+
+/* Accessible focus styles for buttons */
+button:focus-visible,
+a:focus-visible {
+  outline: 2px solid var(--highlight-color);
+  outline-offset: 4px;
+}
+
+/* Remove outline for mouse users */
+button:focus:not(:focus-visible),
+a:focus:not(:focus-visible) {
+  outline: none;
+}
+
+/* ============================================= 
+   ENHANCED MOBILE NAVIGATION
+   ============================================= */
+
+/* Mobile nav link smooth transition */
+.mobile-nav-links a {
+  position: relative;
+  overflow: hidden;
+}
+
+.mobile-nav-links a::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: var(--highlight-color);
+  opacity: 0.1;
+  transition: left 0.3s ease;
+  z-index: -1;
+}
+
+.mobile-nav-links a:active::before {
+  left: 0;
+}
+
+/* ============================================= 
+   RESPONSIVE SPACING & OVERFLOW
+   ============================================= */
+
+/* Prevent horizontal overflow on all devices */
+body, html {
+  overflow-x: hidden;
+  width: 100%;
+}
+
+/* Ensure content never exceeds viewport */
+main {
+  overflow-x: hidden;
+}
+
+/* Better list spacing */
+ul, ol {
+  list-style-position: inside;
+}
+
+@media (min-width: 768px) {
+  ul, ol {
+    list-style-position: outside;
+  }
+}
+
+/* ============================================= 
+   ENHANCED CARD INTERACTIONS
+   ============================================= */
+
+.card {
+  position: relative;
+  overflow: hidden;
+}
+
+.card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    135deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.05) 50%,
+    transparent 100%
+  );
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+
+.card:hover::before {
+  opacity: 1;
+}
+
+/* Responsive card gap adjustment */
+@media (max-width: 640px) {
+  .grid {
+    gap: 1rem;
+  }
+}
+
+/* ============================================= 
+   RESPONSIVE FORM ELEMENTS
+   ============================================= */
+
+input, 
+textarea, 
+select {
+  width: 100%;
+  max-width: 100%;
+  font-size: 1rem; /* Prevents zoom on iOS */
+  padding: 0.75rem;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--card-border);
+  font-family: var(--font-sans);
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+  outline: none;
+  border-color: var(--highlight-color);
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+@media (min-width: 640px) {
+  input, 
+  textarea, 
+  select {
+    padding: 0.875rem;
+  }
+}
+
+/* ============================================= 
+   RESPONSIVE REDUCES MOTION
+   ============================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ============================================= 
+   RESPONSIVE DARK MODE TRANSITIONS
+   ============================================= */
+
+@media (prefers-color-scheme: dark) {
+  html {
+    color-scheme: dark;
+  }
+}
+
+@media (prefers-color-scheme: light) {
+  html {
+    color-scheme: light;
+  }
+}
+
+/* ============================================= 
+   RESPONSIVE HIGH CONTRAST MODE
+   ============================================= */
+
+@media (prefers-contrast: more) {
+  :root {
+    --text-primary: #000000;
+    --text-secondary: #333333;
+    --accent-color: #0000EE;
+    --highlight-color: #0000FF;
+  }
+
+  [data-theme="dark"] {
+    --text-primary: #FFFFFF;
+    --text-secondary: #CCCCCC;
+    --accent-color: #FFFFFF;
+    --highlight-color: #FFFF00;
+  }
+}
+
+/* ============================================= 
    PRINT STYLES
    ============================================= */
 
