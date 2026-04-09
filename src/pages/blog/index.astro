@@ -1,0 +1,111 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+// Fetch dev.to posts mapping to the user's username
+let sortedPosts = [];
+try {
+  const response = await fetch('https://dev.to/api/articles?username=kaddev', {
+    headers: {
+      'User-Agent': 'curl/8.1.2',
+      'Accept': 'application/vnd.forem.api-v1+json'
+    }
+  });
+  if (response.ok) {
+    sortedPosts = await response.json();
+  } else {
+    console.error("Dev.to API error:", response.status);
+  }
+} catch (e) {
+  console.error("Failed to fetch DEV.to articles", e);
+}
+---
+
+<BaseLayout title="Blog | dev_kad">
+  <section class="section container">
+    <div class="blog-header">
+      <h1 class="section-title">Blog & Articles</h1>
+      <p class="section-lead">Thoughts, tutorials, and engineering deep-dives.</p>
+    </div>
+
+    <div class="blog-grid">
+      {sortedPosts.length === 0 ? (
+        <p>No posts yet. Check back soon!</p>
+      ) : (
+        sortedPosts.map((post) => (
+          <article class="blog-card">
+            <a href={post.url} target="_blank" rel="noopener noreferrer" class="blog-card-link">
+              <span class="blog-card-date">{new Date(post.published_timestamp).toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' })}</span>
+              <h2 class="blog-card-title">{post.title}</h2>
+              <p class="blog-card-desc">{post.description}</p>
+              <span class="blog-card-read">Read on Dev.to &rarr;</span>
+            </a>
+          </article>
+        ))
+      )}
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .blog-header {
+    margin-bottom: 4rem;
+  }
+  .blog-grid {
+    display: grid;
+    gap: 2rem;
+    grid-template-columns: 1fr;
+    max-width: 800px;
+  }
+  .blog-card {
+    border-radius: var(--radius-lg);
+    background-color: var(--bg-secondary);
+    border: 1px solid var(--card-border);
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+  }
+  .blog-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 30px rgba(0,0,0,0.06);
+    border-color: var(--highlight-color);
+  }
+  [data-theme="dark"] .blog-card:hover {
+    box-shadow: 0 12px 30px rgba(0,0,0,0.3);
+  }
+  .blog-card-link {
+    display: flex;
+    flex-direction: column;
+    padding: 2rem;
+    text-decoration: none;
+    color: inherit;
+    height: 100%;
+  }
+  .blog-card-date {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--highlight-color);
+    margin-bottom: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+  .blog-card-title {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    color: var(--text-primary);
+  }
+  .blog-card-desc {
+    color: var(--text-secondary);
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+    flex-grow: 1;
+  }
+  .blog-card-read {
+    font-weight: 600;
+    color: var(--accent-color);
+    font-size: 0.95rem;
+    display: inline-flex;
+    align-items: center;
+    transition: color 0.2s ease;
+  }
+  .blog-card:hover .blog-card-read {
+    color: var(--highlight-color);
+  }
+</style>

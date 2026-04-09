@@ -1,0 +1,1317 @@
+<!DOCTYPE html><html lang="en" data-astro-cid-37fxchfa> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Blog | dev_kad</title><!-- Using Inter for that clean SaaS look --><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet"><!-- Theme loading script --><script>
+      const theme = (() => {
+        if (typeof localStorage !== "undefined" && localStorage.getItem("theme")) {
+          return localStorage.getItem("theme");
+        }
+        if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
+          return "dark";
+        }
+        return "light";
+      })();
+    
+      if (theme === "dark") {
+        document.documentElement.setAttribute("data-theme", "dark");
+      } else {
+        document.documentElement.removeAttribute("data-theme");
+      }
+    </script><style data-vite-dev-id="/Users/kad/Desktop/my_portfolio/src/styles/global.css">/* global.css - Jones Stack Paradigm */
+
+:root {
+  /* Light Theme Variables */
+  --bg-color: #FFFFFF;
+  --bg-secondary: #F8F9FA;
+  --text-primary: #1A1A1A;
+  --text-secondary: #4A5568;
+  --accent-color: #0F172A;
+  /* Deep Navy/Slate */
+  --accent-hover: #334155;
+  --highlight-color: #2563EB;
+  /* Royal Blue for Subtopics */
+  --card-border: #E2E8F0;
+
+  --font-sans: 'Inter', system-ui, sans-serif;
+  --bg-color-rgb: 255, 255, 255;
+  --bg-secondary-rgb: 248, 249, 250;
+
+  --radius-sm: 0.5rem;
+  --radius-md: 0.75rem;
+  --radius-lg: 1rem;
+
+  /* Responsive Font Sizes */
+  --font-h1: clamp(1.75rem, 8vw, 3.5rem);
+  --font-h2: clamp(1.5rem, 6vw, 2.5rem);
+  --font-h3: clamp(1.25rem, 4vw, 1.75rem);
+  --font-base: clamp(0.875rem, 2vw, 1rem);
+  --font-small: clamp(0.75rem, 1.5vw, 0.875rem);
+}
+
+[data-theme="dark"] {
+  --bg-color: #0F172A;
+  /* Slate 900 */
+  --bg-secondary: #1E293B;
+  /* Slate 800 */
+  --bg-color-rgb: 15, 23, 42;
+  --bg-secondary-rgb: 30, 41, 59;
+  --text-primary: #F8FAFC;
+  --text-secondary: #94A3B8;
+  --accent-color: #FFFFFF;
+  --accent-hover: #E2E8F0;
+  --highlight-color: #60A5FA;
+  /* Soft Blue for Subtopics */
+  --card-border: #334155;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  overflow-x: hidden;
+  width: 100%;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--bg-color);
+  color: var(--text-primary);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  min-height: 100vh;
+}
+
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  overflow-wrap: break-word;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: 700;
+  line-height: 1.2;
+  color: var(--text-primary);
+  background: linear-gradient(135deg, var(--text-primary) 0%, var(--text-secondary) 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-size: 200% 200%;
+  animation: textShimmer 8s ease-in-out infinite;
+}
+
+@keyframes textShimmer {
+
+  0%,
+  100% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* Utilities */
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+@media (max-width: 380px) {
+  .container {
+    padding: 0 1.25rem;
+  }
+}
+
+@media (min-width: 640px) {
+  .container {
+    padding: 0 1.75rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .container {
+    max-width: 1200px;
+    padding: 0 2.5rem;
+  }
+}
+
+@media (min-width: 1440px) {
+  .container {
+    padding: 0 3rem;
+  }
+}
+
+.section {
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+}
+
+@media (min-width: 768px) {
+  .section {
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .section {
+    padding-top: 6rem;
+    padding-bottom: 6rem;
+  }
+}
+
+.section {
+  border-bottom: 1px solid var(--card-border);
+}
+
+.section:last-child {
+  border-bottom: none;
+}
+
+.section-title {
+  font-size: var(--font-h2);
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+  color: var(--highlight-color);
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+@media (min-width: 768px) {
+  .section-title {
+    margin-bottom: 2rem;
+  }
+}
+
+/* Theme Toggle Button with advanced effects */
+.theme-toggle {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  color: var(--text-secondary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem;
+  border-radius: 50%;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.theme-toggle::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--highlight-color);
+  border-radius: 50%;
+  transform: scale(0);
+  transition: transform 0.3s ease;
+}
+
+.theme-toggle:hover {
+  color: var(--bg-color);
+  transform: rotate(180deg);
+}
+
+.theme-toggle:hover::before {
+  transform: scale(1);
+}
+
+.theme-toggle svg {
+  position: relative;
+  z-index: 1;
+  transition: transform 0.3s ease;
+}
+
+.theme-toggle:hover svg {
+  transform: rotate(-180deg);
+}
+
+/* Base Buttons */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.3rem 0.6rem;
+  border-radius: var(--radius-md);
+  font-weight: 500;
+  font-size: var(--font-base);
+  transition: all 0.2s ease;
+  cursor: pointer;
+  touch-action: manipulation;
+  white-space: nowrap;
+}
+
+@media (min-width: 640px) {
+  .btn {
+    padding: 0.35rem 0.75rem;
+  }
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, var(--accent-color) 0%, var(--highlight-color) 100%);
+  color: var(--bg-color);
+  border: 1px solid transparent;
+  position: relative;
+  overflow: hidden;
+  animation: pulse 2s ease-in-out infinite;
+}
+
+.btn-primary::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, var(--highlight-color) 0%, var(--accent-color) 100%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(37, 99, 235, 0.3);
+  animation-play-state: paused;
+}
+
+.btn-primary:hover::before {
+  opacity: 1;
+}
+
+.btn-primary:hover {
+  color: var(--bg-color);
+}
+
+@keyframes pulse {
+
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 rgba(37, 99, 235, 0.4);
+  }
+
+  50% {
+    box-shadow: 0 0 0 8px rgba(37, 99, 235, 0);
+  }
+}
+
+.btn-outline {
+  background-color: transparent;
+  color: var(--text-primary);
+  border: 1px solid var(--card-border);
+}
+
+.btn-outline:hover {
+  background-color: var(--bg-secondary);
+  border-color: var(--text-secondary);
+}
+
+/* --- Global Micro-Animations --- */
+
+@keyframes heroFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Hero immediate fade-ins with enhanced floating effect */
+.hero-title,
+.hero-subtitle,
+.hero-actions,
+.greeting {
+  animation: heroFadeIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards,
+    float 6s ease-in-out infinite;
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+@keyframes float {
+
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+
+  50% {
+    transform: translateY(-5px);
+  }
+}
+
+.greeting {
+  animation-delay: 0ms;
+}
+
+.hero-title {
+  animation-delay: 150ms;
+}
+
+.hero-subtitle {
+  animation-delay: 300ms;
+}
+
+.hero-actions {
+  animation-delay: 450ms;
+}
+
+/* Scroll Reveal Classes */
+.reveal-up {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+
+.reveal-up.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ============================================= 
+   RESPONSIVE HEADER & NAVIGATION
+   ============================================= */
+
+/* Header Container */
+.app-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: var(--bg-color);
+  border-bottom: 1px solid var(--card-border);
+  transition: background 0.3s ease;
+}
+
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  gap: 1rem;
+}
+
+@media (min-width: 640px) {
+  .header-container {
+    padding: 1.25rem 1.5rem;
+  }
+}
+
+/* Logo */
+.logo {
+  flex-shrink: 0;
+  font-size: clamp(1rem, 3vw, 1.25rem);
+  font-weight: 700;
+  color: var(--accent-color);
+  transition: color 0.2s ease;
+}
+
+.logo:hover {
+  color: var(--highlight-color);
+}
+
+/* Header Right (nav + buttons) */
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+@media (min-width: 768px) {
+  .header-right {
+    gap: 1.5rem;
+  }
+}
+
+/* Desktop Navigation */
+.desktop-nav {
+  display: none;
+}
+
+@media (min-width: 768px) {
+  .desktop-nav {
+    display: block;
+  }
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+@media (min-width: 1024px) {
+  .nav-links {
+    gap: 2rem;
+  }
+}
+
+.nav-links a {
+  font-size: var(--font-base);
+  font-weight: 500;
+  color: var(--text-secondary);
+  transition: color 0.2s ease;
+  padding: 0.5rem 0.75rem;
+  display: inline-block;
+}
+
+.nav-links a:hover {
+  color: var(--highlight-color);
+}
+
+/* Hamburger Menu */
+.hamburger {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  width: 32px;
+  height: 32px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  align-items: center;
+  gap: 5px;
+  padding: 0.5rem;
+}
+
+@media (min-width: 768px) {
+  .hamburger {
+    display: none;
+  }
+}
+
+.hamburger span {
+  width: 100%;
+  height: 2.5px;
+  background: var(--text-primary);
+  border-radius: 2px;
+  transition: all 0.3s ease;
+}
+
+.hamburger[aria-expanded="true"] span {
+  background: var(--highlight-color);
+}
+
+.hamburger[aria-expanded="true"] span:nth-child(1) {
+  transform: rotate(45deg) translate(10px, 10px);
+}
+
+.hamburger[aria-expanded="true"] span:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburger[aria-expanded="true"] span:nth-child(3) {
+  transform: rotate(-45deg) translate(8px, -8px);
+}
+
+/* Mobile Navigation Drawer */
+.mobile-nav {
+  display: none;
+  background: var(--bg-secondary);
+  border-bottom: 1px solid var(--card-border);
+  animation: slideDown 0.3s ease;
+}
+
+.mobile-nav[aria-hidden="false"] {
+  display: block;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (min-width: 768px) {
+  .mobile-nav {
+    display: none !important;
+  }
+}
+
+.mobile-nav-links {
+  list-style: none;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.mobile-nav-links a {
+  display: block;
+  padding: 0.75rem 1rem;
+  border-radius: var(--radius-md);
+  color: var(--text-primary);
+  font-weight: 500;
+  transition: background 0.2s ease;
+}
+
+.mobile-nav-links a:active {
+  background: var(--bg-color);
+}
+
+/* ============================================= 
+   RESPONSIVE FOOTER
+   ============================================= */
+
+.app-footer {
+  background: var(--bg-secondary);
+  border-top: 1px solid var(--card-border);
+  padding: 2rem 0;
+  margin-top: 2rem;
+}
+
+@media (min-width: 768px) {
+  .app-footer {
+    padding: 4rem 0;
+    margin-top: 4rem;
+  }
+}
+
+.footer-content {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+}
+
+@media (min-width: 768px) {
+  .footer-content {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 3rem;
+  }
+}
+
+.footer-content h3 {
+  font-size: var(--font-h3);
+  margin-bottom: 0.75rem;
+}
+
+.footer-content p {
+  font-size: var(--font-base);
+  color: var(--text-secondary);
+  margin-bottom: 0.5rem;
+}
+
+.copyright {
+  font-size: var(--font-small) !important;
+  margin-top: 1rem;
+}
+
+/* ============================================= 
+   ENHANCED VISUAL EFFECTS
+   ============================================= */
+
+/* Subtle animated background pattern */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background:
+    radial-gradient(circle at 20% 80%, rgba(37, 99, 235, 0.03) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(37, 99, 235, 0.03) 0%, transparent 50%),
+    radial-gradient(circle at 40% 40%, rgba(37, 99, 235, 0.02) 0%, transparent 50%);
+  animation: subtleShift 20s ease-in-out infinite;
+  pointer-events: none;
+  z-index: -1;
+}
+
+[data-theme="dark"] body::before {
+  background:
+    radial-gradient(circle at 20% 80%, rgba(96, 165, 250, 0.05) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(96, 165, 250, 0.05) 0%, transparent 50%),
+    radial-gradient(circle at 40% 40%, rgba(96, 165, 250, 0.03) 0%, transparent 50%);
+}
+
+@keyframes subtleShift {
+
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+
+  33% {
+    transform: translate(30px, -30px) scale(1.05);
+  }
+
+  66% {
+    transform: translate(-20px, 20px) scale(0.95);
+  }
+}
+
+h1 {
+  font-size: var(--font-h1);
+  margin-bottom: 1rem;
+}
+
+h2 {
+  font-size: var(--font-h2);
+  margin-bottom: 0.875rem;
+}
+
+h3 {
+  font-size: var(--font-h3);
+  margin-bottom: 0.75rem;
+}
+
+p {
+  font-size: var(--font-base);
+  line-height: 1.8;
+  margin-bottom: 1rem;
+}
+
+/* ============================================= 
+   RESPONSIVE GRID & FLEX
+   ============================================= */
+
+/* Hero Section Responsiveness */
+.hero-section {
+  min-height: 60vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+}
+
+@media (min-width: 768px) {
+  .hero-section {
+    min-height: 70vh;
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .hero-section {
+    min-height: 80vh;
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+  }
+}
+
+.hero-highlight {
+  color: var(--highlight-color);
+}
+
+.desktop-br {
+  display: none;
+}
+
+@media (min-width: 768px) {
+  .desktop-br {
+    display: inline;
+  }
+}
+
+/* Hero Actions / Button Group */
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 1.5rem;
+}
+
+@media (min-width: 640px) {
+  .hero-actions {
+    gap: 1rem;
+  }
+}
+
+/* Card Grids */
+.grid {
+  display: grid;
+  gap: 1.5rem;
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 640px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+  }
+}
+
+.card {
+  padding: 1.25rem;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--card-border);
+  background: var(--bg-secondary);
+  transition: all 0.3s ease;
+}
+
+@media (min-width: 768px) {
+  .card {
+    padding: 1.5rem;
+  }
+}
+
+.card:hover {
+  border-color: var(--highlight-color);
+  transform: translateY(-6px) scale(1.02);
+  box-shadow:
+    0 20px 40px rgba(0, 0, 0, 0.1),
+    0 8px 16px rgba(37, 99, 235, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+[data-theme="dark"] .card:hover {
+  box-shadow:
+    0 20px 40px rgba(0, 0, 0, 0.4),
+    0 8px 16px rgba(96, 165, 250, 0.15),
+    inset 0 1px 0 rgba(255, 255, 255, 0.05);
+}
+
+/* ============================================= 
+   RESPONSIVE IMAGES & MEDIA
+   ============================================= */
+
+img {
+  height: auto;
+  display: block;
+}
+
+.profile-image {
+  max-width: 100%;
+  width: 100%;
+  border-radius: var(--radius-lg);
+}
+
+@media (min-width: 768px) {
+  .profile-image {
+    max-width: 400px;
+  }
+}
+
+/* ============================================= 
+   TOUCH-FRIENDLY INTERACTIONS
+   ============================================= */
+
+@media (hover: none) and (pointer: coarse) {
+  .btn {
+    min-height: 44px;
+    min-width: 44px;
+  }
+
+  .theme-toggle {
+    min-height: 44px;
+    min-width: 44px;
+  }
+
+  a {
+    min-height: 44px;
+    padding: 0.5rem;
+  }
+}
+
+/* ============================================= 
+   LANDSCAPE & SMALL DEVICES
+   ============================================= */
+
+@media (max-height: 600px) and (orientation: landscape) {
+  .hero-section {
+    min-height: auto;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+  }
+
+  .app-header {
+    padding: 0.5rem 0;
+  }
+
+  .section {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+  }
+}
+
+/* ============================================= 
+   ENHANCED SCROLL ANIMATIONS
+   ============================================= */
+
+/* Fade in from left */
+.fade-in-left {
+  opacity: 0;
+  transform: translateX(-30px);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.fade-in-left.is-visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Fade in from right */
+.fade-in-right {
+  opacity: 0;
+  transform: translateX(30px);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.fade-in-right.is-visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Stagger animation delay for lists */
+.stagger-delay-1 {
+  --stagger: 100ms;
+}
+
+.stagger-delay-2 {
+  --stagger: 200ms;
+}
+
+.stagger-delay-3 {
+  --stagger: 300ms;
+}
+
+.stagger-delay-4 {
+  --stagger: 400ms;
+}
+
+.stagger-delay-5 {
+  --stagger: 500ms;
+}
+
+.reveal-up.is-visible,
+.fade-in-left.is-visible,
+.fade-in-right.is-visible {
+  transition-delay: var(--stagger, 0ms);
+}
+
+/* ============================================= 
+   ENHANCED STICKY HEADER
+   ============================================= */
+
+/* Header shadow on scroll */
+.app-header.scrolled {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+[data-theme="dark"] .app-header.scrolled {
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.3);
+}
+
+/* Header slide up animation */
+.app-header.hide {
+  transform: translateY(-100%);
+  transition: transform 0.3s ease;
+}
+
+.app-header.show {
+  transform: translateY(0);
+  transition: transform 0.3s ease;
+}
+
+/* ============================================= 
+   MODERN CSS FEATURES
+   ============================================= */
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-secondary);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--card-border);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--text-secondary);
+}
+
+/* Selection styling */
+::selection {
+  background: rgba(37, 99, 235, 0.2);
+  color: var(--text-primary);
+}
+
+[data-theme="dark"] ::selection {
+  background: rgba(96, 165, 250, 0.3);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* Better focus visible for keyboard navigation */
+:focus-visible {
+  outline: 2px solid var(--highlight-color);
+  outline-offset: 2px;
+  border-radius: var(--radius-md);
+  box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.1);
+}
+
+/* Enhanced focus for interactive elements */
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+  outline: 2px solid var(--highlight-color);
+  outline-offset: 2px;
+  box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.15);
+}
+
+/* Remove outline for mouse users */
+button:focus:not(:focus-visible),
+a:focus:not(:focus-visible) {
+  outline: none;
+}
+
+/* ============================================= 
+   ENHANCED MOBILE NAVIGATION
+   ============================================= */
+
+/* Mobile nav link smooth transition */
+.mobile-nav-links a {
+  position: relative;
+  overflow: hidden;
+}
+
+.mobile-nav-links a::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: var(--highlight-color);
+  opacity: 0.1;
+  transition: left 0.3s ease;
+  z-index: -1;
+}
+
+.mobile-nav-links a:active::before {
+  left: 0;
+}
+
+/* ============================================= 
+   RESPONSIVE SPACING & OVERFLOW
+   ============================================= */
+
+/* Prevent horizontal overflow on all devices */
+body,
+html {
+  overflow-x: hidden;
+  width: 100%;
+}
+
+/* Ensure content never exceeds viewport */
+main {
+  overflow-x: hidden;
+}
+
+/* Better list spacing */
+ul,
+ol {
+  list-style-position: inside;
+}
+
+@media (min-width: 768px) {
+
+  ul,
+  ol {
+    list-style-position: outside;
+  }
+}
+
+/* ============================================= 
+   ENHANCED CARD INTERACTIONS
+   ============================================= */
+
+.card {
+  position: relative;
+  overflow: hidden;
+}
+
+.card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg,
+      transparent 0%,
+      rgba(255, 255, 255, 0.05) 50%,
+      transparent 100%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+
+.card:hover::before {
+  opacity: 1;
+}
+
+/* Responsive card gap adjustment */
+@media (max-width: 640px) {
+  .grid {
+    gap: 1rem;
+  }
+}
+
+/* ============================================= 
+   RESPONSIVE FORM ELEMENTS
+   ============================================= */
+
+input,
+textarea,
+select {
+  width: 100%;
+  max-width: 100%;
+  font-size: 1rem;
+  /* Prevents zoom on iOS */
+  padding: 0.75rem;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--card-border);
+  font-family: var(--font-sans);
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+  outline: none;
+  border-color: var(--highlight-color);
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+@media (min-width: 640px) {
+
+  input,
+  textarea,
+  select {
+    padding: 0.875rem;
+  }
+}
+
+/* ============================================= 
+   RESPONSIVE REDUCES MOTION
+   ============================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ============================================= 
+   RESPONSIVE DARK MODE TRANSITIONS
+   ============================================= */
+
+@media (prefers-color-scheme: dark) {
+  html {
+    color-scheme: dark;
+  }
+}
+
+@media (prefers-color-scheme: light) {
+  html {
+    color-scheme: light;
+  }
+}
+
+/* ============================================= 
+   RESPONSIVE HIGH CONTRAST MODE
+   ============================================= */
+
+@media (prefers-contrast: more) {
+  :root {
+    --text-primary: #000000;
+    --text-secondary: #333333;
+    --accent-color: #0000EE;
+    --highlight-color: #0000FF;
+  }
+
+  [data-theme="dark"] {
+    --text-primary: #FFFFFF;
+    --text-secondary: #CCCCCC;
+    --accent-color: #FFFFFF;
+    --highlight-color: #FFFF00;
+  }
+}
+
+/* ============================================= 
+   PRINT STYLES
+   ============================================= */
+
+@media print {
+
+  .app-header,
+  .app-footer,
+  .theme-toggle,
+  .hamburger,
+  .mobile-nav {
+    display: none;
+  }
+
+  body {
+    line-height: 1.5;
+  }
+
+  .section {
+    page-break-inside: avoid;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+  }
+}</style>
+<style data-vite-dev-id="/Users/kad/Desktop/my_portfolio/src/layouts/BaseLayout.astro?astro&#38;type=style&#38;index=0&#38;lang.css">.app-header[data-astro-cid-37fxchfa]{position:sticky;top:0;z-index:100;background-color:var(--bg-color);border-bottom:1px solid var(--card-border);background-color:rgba(var(--bg-color-rgb),0.8);backdrop-filter:blur(8px)}.header-container[data-astro-cid-37fxchfa]{display:flex;justify-content:space-between;align-items:center;height:4rem}.logo[data-astro-cid-37fxchfa]{font-size:1.2rem;letter-spacing:-0.02em}.header-right[data-astro-cid-37fxchfa]{display:flex;align-items:center;gap:0.5rem}.desktop-nav[data-astro-cid-37fxchfa]{display:none}@media (min-width: 768px){.desktop-nav[data-astro-cid-37fxchfa]{display:block}}.nav-links[data-astro-cid-37fxchfa]{display:flex;list-style:none;gap:2rem}.nav-links[data-astro-cid-37fxchfa] a[data-astro-cid-37fxchfa]{color:var(--text-secondary);font-size:0.95rem;font-weight:500;transition:color 0.2s}.nav-links[data-astro-cid-37fxchfa] a[data-astro-cid-37fxchfa]:hover{color:var(--text-primary)}.hamburger[data-astro-cid-37fxchfa]{display:flex;flex-direction:column;justify-content:center;gap:5px;background:none;border:none;cursor:pointer;padding:0.4rem;width:2rem}.hamburger[data-astro-cid-37fxchfa] span[data-astro-cid-37fxchfa]{display:block;width:100%;height:2px;background-color:var(--text-primary);border-radius:2px;transition:all 0.3s ease;transform-origin:center}.hamburger[data-astro-cid-37fxchfa].is-active span[data-astro-cid-37fxchfa]:nth-child(1){transform:translateY(7px) rotate(45deg)}.hamburger[data-astro-cid-37fxchfa].is-active span[data-astro-cid-37fxchfa]:nth-child(2){opacity:0;transform:scaleX(0)}.hamburger[data-astro-cid-37fxchfa].is-active span[data-astro-cid-37fxchfa]:nth-child(3){transform:translateY(-7px) rotate(-45deg)}@media (min-width: 768px){.hamburger[data-astro-cid-37fxchfa]{display:none}}@media (max-width: 520px){.header-container[data-astro-cid-37fxchfa]{padding:0.75rem 1rem;height:auto}.logo[data-astro-cid-37fxchfa]{font-size:1.1rem}.theme-toggle[data-astro-cid-37fxchfa],.hamburger[data-astro-cid-37fxchfa]{width:1.75rem;padding:0.35rem}.hamburger[data-astro-cid-37fxchfa] span[data-astro-cid-37fxchfa]{height:2px}.nav-links[data-astro-cid-37fxchfa]{gap:1rem}}.mobile-nav[data-astro-cid-37fxchfa]{max-height:0;overflow:hidden;background-color:var(--bg-color);border-top:1px solid var(--card-border);transition:max-height 0.35s ease,padding 0.35s ease}.mobile-nav[data-astro-cid-37fxchfa].is-open{max-height:400px;padding:1rem 0}.mobile-nav-links[data-astro-cid-37fxchfa]{list-style:none;display:flex;flex-direction:column}.mobile-nav-links[data-astro-cid-37fxchfa] li[data-astro-cid-37fxchfa] a[data-astro-cid-37fxchfa]{display:block;padding:0.85rem 1.5rem;color:var(--text-secondary);font-size:1.1rem;font-weight:500;transition:background-color 0.2s,color 0.2s}.mobile-nav-links[data-astro-cid-37fxchfa] li[data-astro-cid-37fxchfa] a[data-astro-cid-37fxchfa]:hover{background-color:var(--bg-secondary);color:var(--text-primary)}@media (min-width: 768px){.mobile-nav[data-astro-cid-37fxchfa]{display:none}}.app-footer[data-astro-cid-37fxchfa]{border-top:1px solid var(--card-border);padding:4rem 0;margin-top:4rem}.app-footer[data-astro-cid-37fxchfa] h3[data-astro-cid-37fxchfa]{margin-bottom:0.5rem}.app-footer[data-astro-cid-37fxchfa] p[data-astro-cid-37fxchfa]{color:var(--text-secondary);font-size:0.95rem}.copyright[data-astro-cid-37fxchfa]{margin-top:2rem;font-size:0.85rem!important}</style>
+<style data-vite-dev-id="/Users/kad/Desktop/my_portfolio/src/pages/blog/index.astro?astro&#38;type=style&#38;index=0&#38;lang.css">.blog-header[data-astro-cid-5tznm7mj]{margin-bottom:4rem}.blog-grid[data-astro-cid-5tznm7mj]{display:grid;gap:2rem;grid-template-columns:1fr;max-width:800px}.blog-card[data-astro-cid-5tznm7mj]{border-radius:var(--radius-lg);background-color:var(--bg-secondary);border:1px solid var(--card-border);transition:transform 0.3s ease,box-shadow 0.3s ease,border-color 0.3s ease}.blog-card[data-astro-cid-5tznm7mj]:hover{transform:translateY(-4px);box-shadow:0 12px 30px rgba(0,0,0,0.06);border-color:var(--highlight-color)}[data-astro-cid-5tznm7mj][data-theme=dark] .blog-card[data-astro-cid-5tznm7mj]:hover{box-shadow:0 12px 30px rgba(0,0,0,0.3)}.blog-card-link[data-astro-cid-5tznm7mj]{display:flex;flex-direction:column;padding:2rem;text-decoration:none;color:inherit;height:100%}.blog-card-date[data-astro-cid-5tznm7mj]{font-size:0.85rem;font-weight:600;color:var(--highlight-color);margin-bottom:0.75rem;text-transform:uppercase;letter-spacing:0.05em}.blog-card-title[data-astro-cid-5tznm7mj]{font-size:1.5rem;margin-bottom:1rem;color:var(--text-primary)}.blog-card-desc[data-astro-cid-5tznm7mj]{color:var(--text-secondary);margin-bottom:1.5rem;line-height:1.6;flex-grow:1}.blog-card-read[data-astro-cid-5tznm7mj]{font-weight:600;color:var(--accent-color);font-size:0.95rem;display:inline-flex;align-items:center;transition:color 0.2s ease}.blog-card[data-astro-cid-5tznm7mj]:hover .blog-card-read[data-astro-cid-5tznm7mj]{color:var(--highlight-color)}</style><script type="module" src="/@vite/client"></script>
+<script type="module" src="/@fs/Users/kad/Desktop/my_portfolio/node_modules/astro/dist/runtime/client/dev-toolbar/entrypoint.js?v=961457cd"></script>
+<script>window.__astro_dev_toolbar__ = {"root":"/Users/kad/Desktop/my_portfolio/","version":"4.16.19","debugInfo":"Astro                    v4.16.19\nNode                     v20.20.2\nSystem                   macOS (x64)\nPackage Manager          npm\nOutput                   static\nAdapter                  none\nIntegrations             none"}</script>
+<script type="module" src="/src/styles/global.css"></script>
+<script type="module" src="/src/layouts/BaseLayout.astro?astro&type=style&index=0&lang.css"></script>
+<script type="module" src="/src/pages/blog/index.astro?astro&type=style&index=0&lang.css"></script></head> <body data-astro-cid-37fxchfa data-astro-source-file="/Users/kad/Desktop/my_portfolio/src/layouts/BaseLayout.astro" data-astro-source-loc="42:9"> <header class="app-header" data-astro-cid-37fxchfa data-astro-source-file="/Users/kad/Desktop/my_portfolio/src/layouts/BaseLayout.astro" data-astro-source-loc="43:32"> <div class="container header-container" data-astro-cid-37fxchfa data-astro-source-file="/Users/kad/Desktop/my_portfolio/src/layouts/BaseLayout.astro" data-astro-source-loc="44:47"> <a href="/" class="logo" data-astro-cid-37fxchfa data-astro-source-file="/Users/kad/Desktop/my_portfolio/src/layouts/BaseLayout.astro" data-astro-source-loc="45:34"> <strong data-astro-cid-37fxchfa data-astro-source-file="/Users/kad/Desktop/my_portfolio/src/layouts/BaseLayout.astro" data-astro-source-loc="46:19">dev_kad</strong> </a> <div class="header-right" data-astro-cid-37fxchfa data-astro-source-file="/Users/kad/Desktop/my_portfolio/src/layouts/BaseLayout.astro" data-astro-source-loc="48:35"> <nav class="desktop-nav" data-astro-cid-37fxchfa data-astro-source-file="/Users/kad/Desktop/my_portfolio/src/layouts/BaseLayout.astro" data-astro-source-loc="49:36"> <ul class="nav-links" data-astro-cid-37fxchfa data-astro-source-file="/Users/kad/Desktop/my_portfolio/src/layouts/BaseLayout.astro" data-astro-source-loc="50:35"> <li data-astro-cid-37fxchfa data-astro-source-file="/Users/kad/Desktop/my_portfolio/src/layouts/BaseLayout.astro" data-astro-source-loc="51:20"><a href="/#about" data-astro-cid-37fxchfa data-astro-source-file="/Users/kad/Desktop/my_portfolio/src/layouts/BaseLayout.astro" data-astro-source-loc="51:37">About</a></li> <li data-astro-cid-37fxchfa data-astro-source-file="/Users/kad/Desktop/my_portfolio/src/layouts/BaseLayout.astro" data-astro-source-loc="52:20"><a href="/#experience" data-astro-cid-37fxchfa data-astro-source-file="/Users/kad/Desktop/my_portfolio/src/layouts/BaseLayout.astro" data-astro-source-loc="52:42">Experience</a></li> <li data-astro-cid-37fxchfa data-astro-source-file="/Users/kad/Desktop/my_portfolio/src/layouts/BaseLayout.astro" data-astro-source-loc="53:20"><a href="/#education" data-astro-cid-37fxchfa data-astro-source-file="/Users/kad/Desktop/my_portfolio/src/layouts/BaseLayout.astro" data-astro-source-loc="53:41">Education</a></li> <li data-astro-cid-37fxchfa data-astro-source-file="/Users/kad/Desktop/my_portfolio/src/layouts/BaseLayout.astro" data-astro-source-loc="54:20"><a href="/#projects" data-astro-cid-37fxchfa data-astro-source-file="/Users/kad/Desktop/my_portfolio/src/layouts/BaseLayout.astro" data-astro-source-loc="54:40">Projects</a></li> <li data-astro-cid-37fxchfa data-astro-source-file="/Users/kad/Desktop/my_portfolio/src/layouts/BaseLayout.astro" data-astro-source-loc="55:20"><a href="/#skills" data-astro-cid-37fxchfa data-astro-source-file="/Users/kad/Desktop/my_portfolio/src/layouts/BaseLayout.astro" data-astro-source-loc="55:38">Skills</a></li> <li data-astro-cid-37fxchfa data-astro-source-file="/Users/kad/Desktop/my_portfolio/src/layouts/BaseLayout.astro" data-astro-source-loc="56:20"><a href="/blog" data-astro-cid-37fxchfa data-astro-source-file="/Users/kad/Desktop/my_portfolio/src/layouts/BaseLayout.astro" data-astro-source-loc="56:35">Blog</a></li> <li data-astro-cid-37fxchfa data-astro-source-file="/Users/kad/Desktop/my_portfolio/src/layouts/BaseLayout.astro" data-astro-source-loc="57:20"><a href="/#contact" data-astro-cid-37fxchfa data-astro-source-file="/Users/kad/Desktop/my_portfolio/src/layouts/BaseLayout.astro" data-astro-source-loc="57:39">Contact</a></li> </ul> </nav> <button id="theme-toggle" class="theme-toggle" aria-label="Toggle Theme" data-astro-cid-37fxchfa data-astro-source-file="/Users/kad/Desktop/my_portfolio/src/layouts/BaseLayout.astro" data-astro-source-loc="60:84"> <svg class="sun-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-astro-cid-37fxchfa data-astro-source-file="/Users/kad/Desktop/my_portfolio/src/layouts/BaseLayout.astro" data-astro-source-loc="61:212"><circle cx="12" cy="12" r="5" data-astro-cid-37fxchfa data-astro-source-file="/Users/kad/Desktop/my_portfolio/src/layouts/BaseLayout.astro" data-astro-source-loc="61:212"></circle><line x1="12" y1="1" x2="12" y2="3" data-astro-cid-37fxchfa data-astro-source-file="/Users/kad/Desktop/my_portfolio/src/layouts/BaseLayout.astro" data-astro-source-loc="61:251"></line><line x1="12" y1="21" x2="12" y2="23" data-astro-cid-37fxchfa data-astro-source-file="/Users/kad/Desktop/my_portfolio/src/layouts/BaseLayout.astro" data-astro-source-loc="61:294"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64" data-astro-cid-37fxchfa data-astro-source-file="/Users/kad/Desktop/my_portfolio/src/layouts/BaseLayout.astro" data-astro-source-loc="61:339"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78" data-astro-cid-37fxchfa data-astro-source-file="/Users/kad/Desktop/my_portfolio/src/layouts/BaseLayout.astro" data-astro-source-loc="61:392"></line><line x1="1" y1="12" x2="3" y2="12" data-astro-cid-37fxchfa data-astro-source-file="/Users/kad/Desktop/my_portfolio/src/layouts/BaseLayout.astro" data-astro-source-loc="61:449"></line><line x1="21" y1="12" x2="23" y2="12" data-astro-cid-37fxchfa data-astro-source-file="/Users/kad/Desktop/my_portfolio/src/layouts/BaseLayout.astro" data-astro-source-loc="61:492"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36" data-astro-cid-37fxchfa data-astro-source-file="/Users/kad/Desktop/my_portfolio/src/layouts/BaseLayout.astro" data-astro-source-loc="61:537"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22" data-astro-cid-37fxchfa data-astro-source-file="/Users/kad/Desktop/my_portfolio/src/layouts/BaseLayout.astro" data-astro-source-loc="61:592"></line></svg> <svg class="moon-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display: none;" data-astro-cid-37fxchfa data-astro-source-file="/Users/kad/Desktop/my_portfolio/src/layouts/BaseLayout.astro" data-astro-source-loc="62:236"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" data-astro-cid-37fxchfa data-astro-source-file="/Users/kad/Desktop/my_portfolio/src/layouts/BaseLayout.astro" data-astro-source-loc="62:236"></path></svg> </button> <button id="hamburger" class="hamburger" aria-label="Open Menu" aria-expanded="false" data-astro-cid-37fxchfa data-astro-source-file="/Users/kad/Desktop/my_portfolio/src/layouts/BaseLayout.astro" data-astro-source-loc="64:97"> <span data-astro-cid-37fxchfa data-astro-source-file="/Users/kad/Desktop/my_portfolio/src/layouts/BaseLayout.astro" data-astro-source-loc="65:14"></span><span data-astro-cid-37fxchfa data-astro-source-file="/Users/kad/Desktop/my_portfolio/src/layouts/BaseLayout.astro" data-astro-source-loc="65:27"></span><span data-astro-cid-37fxchfa data-astro-source-file="/Users/kad/Desktop/my_portfolio/src/layouts/BaseLayout.astro" data-astro-source-loc="65:40"></span> </button> </div> </div> <!-- Mobile Nav Drawer --> <div id="mobile-nav" class="mobile-nav" aria-hidden="true" data-astro-cid-37fxchfa data-astro-source-file="/Users/kad/Desktop/my_portfolio/src/layouts/BaseLayout.astro" data-astro-source-loc="70:66"> <ul class="mobile-nav-links" data-astro-cid-37fxchfa data-astro-source-file="/Users/kad/Desktop/my_portfolio/src/layouts/BaseLayout.astro" data-astro-source-loc="71:38"> <li data-astro-cid-37fxchfa data-astro-source-file="/Users/kad/Desktop/my_portfolio/src/layouts/BaseLayout.astro" data-astro-source-loc="72:16"><a href="/#about" data-astro-cid-37fxchfa data-astro-source-file="/Users/kad/Desktop/my_portfolio/src/layouts/BaseLayout.astro" data-astro-source-loc="72:33">About</a></li> <li data-astro-cid-37fxchfa data-astro-source-file="/Users/kad/Desktop/my_portfolio/src/layouts/BaseLayout.astro" data-astro-source-loc="73:16"><a href="/#experience" data-astro-cid-37fxchfa data-astro-source-file="/Users/kad/Desktop/my_portfolio/src/layouts/BaseLayout.astro" data-astro-source-loc="73:38">Experience</a></li> <li data-astro-cid-37fxchfa data-astro-source-file="/Users/kad/Desktop/my_portfolio/src/layouts/BaseLayout.astro" data-astro-source-loc="74:16"><a href="/#education" data-astro-cid-37fxchfa data-astro-source-file="/Users/kad/Desktop/my_portfolio/src/layouts/BaseLayout.astro" data-astro-source-loc="74:37">Education</a></li> <li data-astro-cid-37fxchfa data-astro-source-file="/Users/kad/Desktop/my_portfolio/src/layouts/BaseLayout.astro" data-astro-source-loc="75:16"><a href="/#projects" data-astro-cid-37fxchfa data-astro-source-file="/Users/kad/Desktop/my_portfolio/src/layouts/BaseLayout.astro" data-astro-source-loc="75:36">Projects</a></li> <li data-astro-cid-37fxchfa data-astro-source-file="/Users/kad/Desktop/my_portfolio/src/layouts/BaseLayout.astro" data-astro-source-loc="76:16"><a href="/#skills" data-astro-cid-37fxchfa data-astro-source-file="/Users/kad/Desktop/my_portfolio/src/layouts/BaseLayout.astro" data-astro-source-loc="76:34">Skills</a></li> <li data-astro-cid-37fxchfa data-astro-source-file="/Users/kad/Desktop/my_portfolio/src/layouts/BaseLayout.astro" data-astro-source-loc="77:16"><a href="/blog" data-astro-cid-37fxchfa data-astro-source-file="/Users/kad/Desktop/my_portfolio/src/layouts/BaseLayout.astro" data-astro-source-loc="77:31">Blog</a></li> <li data-astro-cid-37fxchfa data-astro-source-file="/Users/kad/Desktop/my_portfolio/src/layouts/BaseLayout.astro" data-astro-source-loc="78:16"><a href="/#contact" data-astro-cid-37fxchfa data-astro-source-file="/Users/kad/Desktop/my_portfolio/src/layouts/BaseLayout.astro" data-astro-source-loc="78:35">Contact</a></li> </ul> </div> </header> <main data-astro-cid-37fxchfa data-astro-source-file="/Users/kad/Desktop/my_portfolio/src/layouts/BaseLayout.astro" data-astro-source-loc="83:11">  <section class="section container" data-astro-cid-5tznm7mj data-astro-source-file="/Users/kad/Desktop/my_portfolio/src/pages/blog/index.astro" data-astro-source-loc="15:38"> <div class="blog-header" data-astro-cid-5tznm7mj data-astro-source-file="/Users/kad/Desktop/my_portfolio/src/pages/blog/index.astro" data-astro-source-loc="16:30"> <h1 class="section-title" data-astro-cid-5tznm7mj data-astro-source-file="/Users/kad/Desktop/my_portfolio/src/pages/blog/index.astro" data-astro-source-loc="17:33">Blog & Articles</h1> <p class="section-lead" data-astro-cid-5tznm7mj data-astro-source-file="/Users/kad/Desktop/my_portfolio/src/pages/blog/index.astro" data-astro-source-loc="18:31">Thoughts, tutorials, and engineering deep-dives.</p> </div> <div class="blog-grid" data-astro-cid-5tznm7mj data-astro-source-file="/Users/kad/Desktop/my_portfolio/src/pages/blog/index.astro" data-astro-source-loc="21:28"> <article class="blog-card" data-astro-cid-5tznm7mj data-astro-source-file="/Users/kad/Desktop/my_portfolio/src/pages/blog/index.astro" data-astro-source-loc="26:38"> <a href="https://dev.to/kaddev/ai-is-replacing-programmers-4e31" target="_blank" rel="noopener noreferrer" class="blog-card-link" data-astro-cid-5tznm7mj data-astro-source-file="/Users/kad/Desktop/my_portfolio/src/pages/blog/index.astro" data-astro-source-loc="27:97"> <span class="blog-card-date" data-astro-cid-5tznm7mj data-astro-source-file="/Users/kad/Desktop/my_portfolio/src/pages/blog/index.astro" data-astro-source-loc="28:44">Mar 30, 2026</span> <h2 class="blog-card-title" data-astro-cid-5tznm7mj data-astro-source-file="/Users/kad/Desktop/my_portfolio/src/pages/blog/index.astro" data-astro-source-loc="29:43">AI is replacing programmers.</h2> <p class="blog-card-desc" data-astro-cid-5tznm7mj data-astro-source-file="/Users/kad/Desktop/my_portfolio/src/pages/blog/index.astro" data-astro-source-loc="30:41">A post by KELVIN ATSU DJAYOURI</p> <span class="blog-card-read" data-astro-cid-5tznm7mj data-astro-source-file="/Users/kad/Desktop/my_portfolio/src/pages/blog/index.astro" data-astro-source-loc="31:44">Read on Dev.to &rarr;</span> </a> </article> </div> </section>  </main> <footer class="app-footer" data-astro-cid-37fxchfa data-astro-source-file="/Users/kad/Desktop/my_portfolio/src/layouts/BaseLayout.astro" data-astro-source-loc="87:32"> <div class="container footer-content" data-astro-cid-37fxchfa data-astro-source-file="/Users/kad/Desktop/my_portfolio/src/layouts/BaseLayout.astro" data-astro-source-loc="88:45"> <div data-astro-cid-37fxchfa data-astro-source-file="/Users/kad/Desktop/my_portfolio/src/layouts/BaseLayout.astro" data-astro-source-loc="89:14"> <h3 data-astro-cid-37fxchfa data-astro-source-file="/Users/kad/Desktop/my_portfolio/src/layouts/BaseLayout.astro" data-astro-source-loc="90:15">dev_kad</h3> <p data-astro-cid-37fxchfa data-astro-source-file="/Users/kad/Desktop/my_portfolio/src/layouts/BaseLayout.astro" data-astro-source-loc="91:14">The Engineer Behind the Code</p> <p class="copyright" data-astro-cid-37fxchfa data-astro-source-file="/Users/kad/Desktop/my_portfolio/src/layouts/BaseLayout.astro" data-astro-source-loc="92:32">© 2026 dev_kad. Crafted with Astro.</p> </div> </div> </footer> <script>
+      // Theme Toggle Logic
+      const themeToggle = document.getElementById('theme-toggle');
+      const sunIcon = document.querySelector('.sun-icon');
+      const moonIcon = document.querySelector('.moon-icon');
+
+      const updateIcons = (theme) => {
+        if (theme === 'dark') {
+          sunIcon.style.display = 'block';
+          moonIcon.style.display = 'none';
+        } else {
+          sunIcon.style.display = 'none';
+          moonIcon.style.display = 'block';
+        }
+      };
+
+      // Set initial icons based on script injected in head
+      updateIcons(document.documentElement.getAttribute('data-theme') || 'light');
+
+      themeToggle.addEventListener('click', () => {
+        const currentTheme = document.documentElement.getAttribute('data-theme');
+        let newTheme = 'dark';
+        
+        if (currentTheme === 'dark') {
+          newTheme = 'light';
+          document.documentElement.removeAttribute('data-theme');
+        } else {
+          document.documentElement.setAttribute('data-theme', 'dark');
+        }
+        
+        localStorage.setItem('theme', newTheme);
+        updateIcons(newTheme);
+      });
+
+      // --- Hamburger Menu Logic ---
+      const hamburger = document.getElementById('hamburger');
+      const mobileNav = document.getElementById('mobile-nav');
+
+      hamburger.addEventListener('click', () => {
+        const isOpen = mobileNav.classList.toggle('is-open');
+        hamburger.setAttribute('aria-expanded', isOpen);
+        hamburger.classList.toggle('is-active', isOpen);
+      });
+
+      // Close mobile nav when a link is clicked
+      mobileNav.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+          mobileNav.classList.remove('is-open');
+          hamburger.setAttribute('aria-expanded', 'false');
+          hamburger.classList.remove('is-active');
+        });
+      });
+
+      // --- Intersection Observer for Scroll Animations ---
+      document.addEventListener('DOMContentLoaded', () => {
+        // Auto-assign the reveal class to all major semantic blocks to keep HTML pristine
+        const elementsToAnimate = document.querySelectorAll(
+          '.section-title, .section-lead, .prose p, .timeline-item, .project-card, .skill-category, .contact-links'
+        );
+        
+        elementsToAnimate.forEach((el, index) => {
+          el.classList.add('reveal-up');
+          // Add a slight stagger effect to grid/flex items
+          if(el.classList.contains('project-card') || el.classList.contains('timeline-item') || el.classList.contains('skill-category')) {
+             el.style.transitionDelay = `${(index % 3) * 150}ms`;
+          }
+        });
+
+        const observerOptions = {
+          root: null,
+          rootMargin: '0px 0px -50px 0px',
+          threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries, observer) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('is-visible');
+              observer.unobserve(entry.target); // Unobserve to play animation only once
+            }
+          });
+        }, observerOptions);
+
+        document.querySelectorAll('.reveal-up').forEach(el => observer.observe(el));
+      });
+    </script>  </body> </html> 
