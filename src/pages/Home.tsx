@@ -57,19 +57,40 @@ const skillCategories = [
   {
     title: "Frontend Engineering",
     description: "Building responsive, accessible, and high-performance interfaces using modern frameworks and standard design principles.",
-    skills: ["React", "Next.js", "Astro", "TypeScript", "TailwindCSS", "Vanilla CSS"],
+    skills: [
+      { name: "React", icon: "devicon-react-original" },
+      { name: "Next.js", icon: "devicon-nextjs-plain" },
+      { name: "Astro", icon: "devicon-astro-plain" },
+      { name: "TypeScript", icon: "devicon-typescript-plain" },
+      { name: "TailwindCSS", icon: "devicon-tailwindcss-original" },
+      { name: "Vanilla CSS", icon: "devicon-css3-plain" }
+    ],
     icon: frontendIcon
   },
   {
     title: "Backend & Database",
     description: "Architecting scalable server-side logic and robust database schemas to power data-driven applications.",
-    skills: ["Node.js", "Express", "PostgreSQL", "MongoDB", "REST APIs", "GraphQL"],
+    skills: [
+      { name: "Node.js", icon: "devicon-nodejs-plain" },
+      { name: "Express", icon: "devicon-express-original" },
+      { name: "PostgreSQL", icon: "devicon-postgresql-plain" },
+      { name: "MongoDB", icon: "devicon-mongodb-plain" },
+      { name: "REST APIs", icon: "devicon-azuresqldatabase-plain" },
+      { name: "GraphQL", icon: "devicon-graphql-plain" }
+    ],
     icon: backendIcon
   },
   {
     title: "Tools & Architecture",
     description: "Leveraging modern DevOps practices and design systems to streamline development and ensure code quality.",
-    skills: ["Git", "Vercel", "Docker", "Jest", "CI/CD", "Figma"],
+    skills: [
+      { name: "Git", icon: "devicon-git-plain" },
+      { name: "Vercel", icon: "devicon-vercel-original" },
+      { name: "Docker", icon: "devicon-docker-plain" },
+      { name: "Jest", icon: "devicon-jest-plain" },
+      { name: "CI/CD", icon: "devicon-githubactions-plain" },
+      { name: "Figma", icon: "devicon-figma-plain" }
+    ],
     icon: toolsIcon
   }
 ];
@@ -290,7 +311,10 @@ const Home = () => {
                 <p className="project-desc" style={{ marginBottom: '1.5rem' }}>{category.description}</p>
                 <div className="skills-flex" style={{ display: 'flex', flexWrap: 'wrap', gap: '0.65rem' }}>
                   {category.skills.map((skill, sIdx) => (
-                    <span key={sIdx} className="skill-tag">{skill}</span>
+                    <span key={sIdx} className="skill-tag">
+                      <i className={`${skill.icon} skill-tag-icon`}></i>
+                      {skill.name}
+                    </span>
                   ))}
                 </div>
               </div>

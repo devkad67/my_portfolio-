@@ -434,6 +434,9 @@ a {
 }
 
 .skill-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
   padding: 0.5rem 1rem;
   background-color: var(--bg-secondary);
   border: 1px solid var(--card-border);
@@ -443,6 +446,15 @@ a {
   color: var(--text-primary);
   transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
   box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+}
+
+.skill-tag-icon {
+  font-size: 1.1rem;
+  transition: transform 0.3s ease;
+}
+
+.skill-tag:hover .skill-tag-icon {
+  transform: scale(1.2) rotate(5deg);
 }
 
 .skill-tag:hover {
