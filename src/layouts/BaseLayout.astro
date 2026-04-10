@@ -15,10 +15,10 @@ const { title } = Astro.props;
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{title}</title>
     
-    <!-- Using Inter for that clean SaaS look -->
+    <!-- Using Outfit for that premium aesthetic -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     
     <!-- Theme loading script -->
     <script is:inline>
@@ -88,7 +88,7 @@ const { title } = Astro.props;
       <div class="container footer-content">
         <div>
           <h3>dev_kad</h3>
-          <p>The Engineer Behind the Code</p>
+          <p>The Developer Behind the Code</p>
           <p class="copyright">© {new Date().getFullYear()} dev_kad. Crafted with Astro.</p>
         </div>
       </div>
@@ -136,6 +136,7 @@ const { title } = Astro.props;
         const isOpen = mobileNav.classList.toggle('is-open');
         hamburger.setAttribute('aria-expanded', isOpen);
         hamburger.classList.toggle('is-active', isOpen);
+        mobileNav.setAttribute('aria-hidden', !isOpen);
       });
 
       // Close mobile nav when a link is clicked
@@ -144,6 +145,7 @@ const { title } = Astro.props;
           mobileNav.classList.remove('is-open');
           hamburger.setAttribute('aria-expanded', 'false');
           hamburger.classList.remove('is-active');
+          mobileNav.setAttribute('aria-hidden', 'true');
         });
       });
 

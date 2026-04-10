@@ -1,48 +1,44 @@
 /* global.css - Jones Stack Paradigm */
 
 :root {
-  /* Light Theme Variables */
-  --bg-color: #FFFFFF;
-  --bg-secondary: #F8F9FA;
-  --text-primary: #1A1A1A;
-  --text-secondary: #4A5568;
-  --accent-color: #0F172A;
-  /* Deep Navy/Slate */
-  --accent-hover: #334155;
-  --highlight-color: #2563EB;
-  /* Royal Blue for Subtopics */
-  --card-border: #E2E8F0;
+  /* Premium Light Theme Variables (Pearl & Violet) */
+  --bg-color: #FCFBFA;
+  --bg-secondary: #F3F4F6;
+  --bg-color-rgb: 252, 251, 250;
+  --bg-secondary-rgb: 243, 244, 246;
+  --text-primary: #0F172A;
+  --text-secondary: #475569;
+  --accent-color: #6D28D9;
+  --accent-hover: #5B21B6;
+  --highlight-color: #8B5CF6;
+  --card-border: #E5E7EB;
 
-  --font-sans: 'Inter', system-ui, sans-serif;
-  --bg-color-rgb: 255, 255, 255;
-  --bg-secondary-rgb: 248, 249, 250;
+  --font-sans: 'Outfit', system-ui, sans-serif;
 
   --radius-sm: 0.5rem;
   --radius-md: 0.75rem;
-  --radius-lg: 1rem;
+  --radius-lg: 1.25rem;
 
   /* Responsive Font Sizes */
-  --font-h1: clamp(1.75rem, 8vw, 3.5rem);
-  --font-h2: clamp(1.5rem, 6vw, 2.5rem);
-  --font-h3: clamp(1.25rem, 4vw, 1.75rem);
-  --font-base: clamp(0.875rem, 2vw, 1rem);
-  --font-small: clamp(0.75rem, 1.5vw, 0.875rem);
+  --font-h1: clamp(2rem, 8vw, 4rem);
+  --font-h2: clamp(1.75rem, 6vw, 2.75rem);
+  --font-h3: clamp(1.35rem, 4vw, 1.85rem);
+  --font-base: clamp(0.95rem, 2vw, 1.05rem);
+  --font-small: clamp(0.8rem, 1.5vw, 0.9rem);
 }
 
 [data-theme="dark"] {
-  --bg-color: #0F172A;
-  /* Slate 900 */
-  --bg-secondary: #1E293B;
-  /* Slate 800 */
-  --bg-color-rgb: 15, 23, 42;
-  --bg-secondary-rgb: 30, 41, 59;
-  --text-primary: #F8FAFC;
-  --text-secondary: #94A3B8;
+  /* Premium Dark Theme Variables (Onyx & Fuchsia) */
+  --bg-color: #09090B;
+  --bg-secondary: #18181B;
+  --bg-color-rgb: 9, 9, 11;
+  --bg-secondary-rgb: 24, 24, 27;
+  --text-primary: #FAFAFA;
+  --text-secondary: #A1A1AA;
   --accent-color: #FFFFFF;
-  --accent-hover: #E2E8F0;
-  --highlight-color: #60A5FA;
-  /* Soft Blue for Subtopics */
-  --card-border: #334155;
+  --accent-hover: #E4E4E7;
+  --highlight-color: #D946EF;
+  --card-border: #27272A;
 }
 
 *,
@@ -292,7 +288,7 @@ a {
 
 .btn-primary:hover {
   transform: translateY(-2px);
-  box-shadow: 0 8px 20px rgba(37, 99, 235, 0.3);
+  box-shadow: 0 8px 20px rgba(139, 92, 246, 0.3);
   animation-play-state: paused;
 }
 
@@ -308,11 +304,11 @@ a {
 
   0%,
   100% {
-    box-shadow: 0 0 0 0 rgba(37, 99, 235, 0.4);
+    box-shadow: 0 0 0 0 rgba(139, 92, 246, 0.4);
   }
 
   50% {
-    box-shadow: 0 0 0 8px rgba(37, 99, 235, 0);
+    box-shadow: 0 0 0 8px rgba(139, 92, 246, 0);
   }
 }
 
@@ -640,9 +636,9 @@ body::before {
   width: 100%;
   height: 100%;
   background:
-    radial-gradient(circle at 20% 80%, rgba(37, 99, 235, 0.03) 0%, transparent 50%),
-    radial-gradient(circle at 80% 20%, rgba(37, 99, 235, 0.03) 0%, transparent 50%),
-    radial-gradient(circle at 40% 40%, rgba(37, 99, 235, 0.02) 0%, transparent 50%);
+    radial-gradient(circle at 20% 80%, rgba(139, 92, 246, 0.03) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(139, 92, 246, 0.03) 0%, transparent 50%),
+    radial-gradient(circle at 40% 40%, rgba(139, 92, 246, 0.02) 0%, transparent 50%);
   animation: subtleShift 20s ease-in-out infinite;
   pointer-events: none;
   z-index: -1;
@@ -650,9 +646,9 @@ body::before {
 
 [data-theme="dark"] body::before {
   background:
-    radial-gradient(circle at 20% 80%, rgba(96, 165, 250, 0.05) 0%, transparent 50%),
-    radial-gradient(circle at 80% 20%, rgba(96, 165, 250, 0.05) 0%, transparent 50%),
-    radial-gradient(circle at 40% 40%, rgba(96, 165, 250, 0.03) 0%, transparent 50%);
+    radial-gradient(circle at 20% 80%, rgba(217, 70, 239, 0.05) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(217, 70, 239, 0.05) 0%, transparent 50%),
+    radial-gradient(circle at 40% 40%, rgba(217, 70, 239, 0.03) 0%, transparent 50%);
 }
 
 @keyframes subtleShift {
@@ -790,14 +786,14 @@ p {
   transform: translateY(-6px) scale(1.02);
   box-shadow:
     0 20px 40px rgba(0, 0, 0, 0.1),
-    0 8px 16px rgba(37, 99, 235, 0.1),
+    0 8px 16px rgba(139, 92, 246, 0.1),
     inset 0 1px 0 rgba(255, 255, 255, 0.1);
 }
 
 [data-theme="dark"] .card:hover {
   box-shadow:
     0 20px 40px rgba(0, 0, 0, 0.4),
-    0 8px 16px rgba(96, 165, 250, 0.15),
+    0 8px 16px rgba(217, 70, 239, 0.15),
     inset 0 1px 0 rgba(255, 255, 255, 0.05);
 }
 
@@ -970,12 +966,12 @@ img {
 
 /* Selection styling */
 ::selection {
-  background: rgba(37, 99, 235, 0.2);
+  background: rgba(139, 92, 246, 0.2);
   color: var(--text-primary);
 }
 
 [data-theme="dark"] ::selection {
-  background: rgba(96, 165, 250, 0.3);
+  background: rgba(217, 70, 239, 0.3);
 }
 
 html {
@@ -987,7 +983,7 @@ html {
   outline: 2px solid var(--highlight-color);
   outline-offset: 2px;
   border-radius: var(--radius-md);
-  box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.1);
+  box-shadow: 0 0 0 4px rgba(139, 92, 246, 0.1);
 }
 
 /* Enhanced focus for interactive elements */
@@ -998,7 +994,7 @@ textarea:focus-visible,
 select:focus-visible {
   outline: 2px solid var(--highlight-color);
   outline-offset: 2px;
-  box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.15);
+  box-shadow: 0 0 0 4px rgba(139, 92, 246, 0.15);
 }
 
 /* Remove outline for mouse users */
@@ -1119,7 +1115,7 @@ textarea:focus,
 select:focus {
   outline: none;
   border-color: var(--highlight-color);
-  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+  box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.1);
 }
 
 @media (min-width: 640px) {
