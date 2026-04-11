@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import profileImage from '../assets/me.png';
 import heroShot from '../assets/hero.png';
 import realEstateIcon from '../assets/real_estate.png';
-import campusIcon from '../assets/campus.png';
 import formFlowIcon from '../assets/formflow.png';
 import portfolioIcon from '../assets/portfolio.png';
 import frontendIcon from '../assets/frontend_tech.png';
@@ -26,15 +25,6 @@ const projects = [
     linkText: 'View project',
     tags: ['React', 'Node.js', 'Express'],
     image: realEstateIcon,
-  },
-  {
-    title: 'Campus Marketplace',
-    description:
-      'A peer-to-peer marketplace for university students to buy and trade items within their community.',
-    link: '#',
-    linkText: 'View project',
-    tags: ['React', 'Firebase', 'Tailwind'],
-    image: campusIcon,
   },
   {
     title: 'FormFlow',
@@ -199,7 +189,7 @@ const Home = () => {
                 <span className="stat-label">Years building</span>
               </div>
               <div className="stat-card">
-                <span className="stat-number">4+</span>
+                <span className="stat-number">3+</span>
                 <span className="stat-label">Projects</span>
               </div>
               <div className="stat-card">
@@ -227,9 +217,9 @@ const Home = () => {
                 <span className="hero-callout-badge">Spotlight</span>
               </div>
               <div className="hero-callout-body">
-                <p className="hero-callout-title">Campus Marketplace</p>
+                <p className="hero-callout-title">Real Estate platform</p>
                 <p className="hero-callout-text">
-                  Campus commerce with listings and messaging tuned for quick student trades.
+                  Property listings with clean UI and smooth filtering for browsing and discovery.
                 </p>
               </div>
               <a href="#projects" className="hero-callout-link">
