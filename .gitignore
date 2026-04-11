@@ -19,3 +19,6 @@ pnpm-debug.log*
 # OS-specific files
 .DS_Store
 Thumbs.db
+
+# Local dev snapshots (not the Vite entry)
+dev.html

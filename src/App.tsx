@@ -44,6 +44,23 @@ function App() {
     localStorage.setItem('theme', theme);
   }, [theme]);
 
+  useEffect(() => {
+    if (!isMenuOpen) return;
+
+    const onKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') setIsMenuOpen(false);
+    };
+
+    document.addEventListener('keydown', onKeyDown);
+    const prevOverflow = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+
+    return () => {
+      document.removeEventListener('keydown', onKeyDown);
+      document.body.style.overflow = prevOverflow;
+    };
+  }, [isMenuOpen]);
+
   // Handle intersection observer for reveal animations
   useEffect(() => {
     const elementsToAnimate = document.querySelectorAll(
@@ -131,7 +148,7 @@ function App() {
             <button 
               id="hamburger" 
               className={`hamburger ${isMenuOpen ? 'is-active' : ''}`} 
-              aria-label="Open Menu" 
+              aria-label={isMenuOpen ? 'Close menu' : 'Open menu'} 
               aria-expanded={isMenuOpen}
               onClick={() => setIsMenuOpen(!isMenuOpen)}
             >
