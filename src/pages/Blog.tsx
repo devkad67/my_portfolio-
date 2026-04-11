@@ -17,10 +17,10 @@ const Blog = () => {
       try {
         const response = await fetch('https://dev.to/api/articles?username=kaddev');
         if (!response.ok) throw new Error('API failed');
-        const data = await response.json();
+        const data = (await response.json()) as Article[];
         setArticles(data);
       } catch (err) {
-        console.error("DevTo Feed Error:", err);
+        console.error('Dev.to feed error:', err);
         setError('Unable to load articles right now.');
       } finally {
         setLoading(false);
@@ -32,103 +32,42 @@ const Blog = () => {
 
   return (
     <section className="section container">
-      <div className="blog-header">
-        <h1 className="section-title">Blog & Articles</h1>
-        <p className="section-lead">Thoughts, tutorials, and development deep-dives.</p>
-      </div>
+      <header className="blog-page-header">
+        <p className="section-eyebrow">Blog</p>
+        <h1 className="section-title">Articles &amp; notes</h1>
+        <p className="section-lead">Tutorials and thoughts from Dev.to.</p>
+      </header>
 
-      <div className="blog-grid">
-        {loading && <p style={{ color: 'var(--text-secondary)', fontWeight: 500 }}>Loading articles from Dev.to...</p>}
-        {error && (
-          <p>
-            {error} You can check them out directly at{' '}
-            <a href="https://dev.to/kaddev" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--highlight-color)', textDecoration: 'underline' }}>
-              dev.to/kaddev
-            </a>.
-          </p>
-        )}
-        {!loading && !error && articles.length === 0 && <p>No posts yet. Check back soon!</p>}
-        {!loading && !error && articles.map((post, idx) => (
-          <article key={idx} className="blog-card">
-            <a href={post.url} target="_blank" rel="noopener noreferrer" className="blog-card-link">
-              <span className="blog-card-date">
-                {new Date(post.published_timestamp).toLocaleDateString('en-US', {
-                  year: 'numeric',
-                  month: 'short',
-                  day: 'numeric',
-                })}
-              </span>
-              <h2 className="blog-card-title">{post.title}</h2>
-              <p className="blog-card-desc">{post.description}</p>
-              <span className="blog-card-read">Read on Dev.to &rarr;</span>
+      <div className="blog-grid-page">
+        {loading ? <p className="blog-preview-status">Loading articles…</p> : null}
+        {error ? (
+          <p className="blog-preview-status">
+            {error}{' '}
+            <a href="https://dev.to/kaddev" target="_blank" rel="noopener noreferrer" className="project-link">
+              Open dev.to/kaddev →
             </a>
-          </article>
-        ))}
+          </p>
+        ) : null}
+        {!loading && !error && articles.length === 0 ? <p className="blog-preview-status">No posts yet.</p> : null}
+        {!loading &&
+          !error &&
+          articles.map((post) => (
+            <article key={post.url} className="blog-card-page">
+              <a href={post.url} target="_blank" rel="noopener noreferrer" className="blog-card-page-link">
+                <time className="blog-card-page-date" dateTime={post.published_timestamp}>
+                  {new Date(post.published_timestamp).toLocaleDateString('en-US', {
+                    year: 'numeric',
+                    month: 'short',
+                    day: 'numeric',
+                  })}
+                </time>
+                <h2 className="blog-card-page-title">{post.title}</h2>
+                <p className="blog-card-page-desc">{post.description}</p>
+                <span className="blog-card-page-cta">Read on Dev.to →</span>
+              </a>
+            </article>
+          ))}
       </div>
-
-      <style dangerouslySetInnerHTML={{ __html: `
-        .blog-header {
-          margin-bottom: 4rem;
-        }
-        .blog-grid {
-          display: grid;
-          gap: 2rem;
-          grid-template-columns: 1fr;
-          max-width: 800px;
-        }
-        .blog-card {
-          border-radius: var(--radius-lg);
-          background-color: var(--bg-secondary);
-          border: 1px solid var(--card-border);
-          transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
-        }
-        .blog-card:hover {
-          transform: translateY(-4px);
-          box-shadow: 0 12px 30px rgba(0,0,0,0.06);
-          border-color: var(--highlight-color);
-        }
-        [data-theme="dark"] .blog-card:hover {
-          box-shadow: 0 12px 30px rgba(0,0,0,0.3);
-        }
-        .blog-card-link {
-          display: flex;
-          flex-direction: column;
-          padding: 2rem;
-          text-decoration: none;
-          color: inherit;
-          height: 100%;
-        }
-        .blog-card-date {
-          font-size: 0.85rem;
-          font-weight: 600;
-          color: var(--highlight-color);
-          margin-bottom: 0.75rem;
-          text-transform: uppercase;
-          letter-spacing: 0.05em;
-        }
-        .blog-card-title {
-          font-size: 1.5rem;
-          margin-bottom: 1rem;
-          color: var(--text-primary);
-        }
-        .blog-card-desc {
-          color: var(--text-secondary);
-          margin-bottom: 1.5rem;
-          line-height: 1.6;
-          flex-grow: 1;
-        }
-        .blog-card-read {
-          font-weight: 600;
-          color: var(--accent-color);
-          font-size: 0.95rem;
-          display: inline-flex;
-          align-items: center;
-          transition: color 0.2s ease;
-        }
-        .blog-card:hover .blog-card-read {
-          color: var(--highlight-color);
-        }
-      `}} />
     </section>
   );
 };
