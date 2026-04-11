@@ -108,13 +108,6 @@ const Home = () => {
   const [loading, setLoading] = useState(true);
   const [formStatus, setFormStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle');
   const [statusMessage, setStatusMessage] = useState('');
-  const [copied, setCopied] = useState(false);
-
-  const copyEmail = () => {
-    void navigator.clipboard.writeText('kelvinatsu213@gmail.com');
-    setCopied(true);
-    setTimeout(() => setCopied(false), 2000);
-  };
 
   const handleFormSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -456,30 +449,9 @@ const Home = () => {
         <div className="contact-section-grid">
           <div className="contact-info">
             <p>
-              Prefer email or the form—either works. I&apos;m happy to talk about your product,
-              timeline, and stack.
+              Send a message with the form—I read everything. You can also reach me on GitHub or
+              LinkedIn.
             </p>
-            <div className="email-logo-container">
-              <button type="button" className="email-logo-card" onClick={copyEmail} title="Copy email">
-                <div className="email-icon-box">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
-                    <rect width="20" height="16" x="2" y="4" rx="2" />
-                    <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
-                  </svg>
-                </div>
-                <div className="email-logo-content">
-                  <span className="email-logo-label">Email</span>
-                  <span className="email-logo-address">
-                    <span className="email-name">kelvinatsu213</span>
-                    <span className="email-at">@</span>
-                    <span className="email-domain">gmail.com</span>
-                  </span>
-                </div>
-                <span className={`copy-feedback ${copied ? 'active' : ''}`} aria-live="polite">
-                  Copied!
-                </span>
-              </button>
-            </div>
             <div className="contact-social-row">
               <a href="https://github.com/kaddev" target="_blank" rel="noopener noreferrer" className="btn btn-outline">
                 <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
