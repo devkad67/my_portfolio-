@@ -43,8 +43,7 @@ function Testimonials() {
     }, []);
 
     return (
-        <div ref={ref} className={`${styles.testimonialsSection} ${isVisible ? styles.animateIn : ''}`}>
-            <div className={styles.testimonialsContainer}>
+        <div ref={ref} className={`${styles.testimonialsContainer} ${isVisible ? styles.animateIn : ''}`}>
                 <span className={styles.sectionTitle}>Testimonials</span>
                 <h2 className={styles.sectionHeading}>What Clients Say</h2>
                 <p className={styles.sectionText}>
@@ -79,7 +78,6 @@ function Testimonials() {
                         </div>
                     ))}
                 </div>
-            </div>
         </div>
     );
 }

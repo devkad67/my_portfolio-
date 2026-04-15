@@ -34,8 +34,7 @@ function Contact({ onSuccess }) {
     };
 
     return (
-        <section id="contact" className={styles.section}>
-            <div className={styles.contactGrid}>
+        <div className={styles.contactGrid}>
                 <div className={styles.contactIntro}>
                     <div>
                         <span className={styles.sectionTitle}>Get in touch</span>
@@ -108,8 +107,7 @@ function Contact({ onSuccess }) {
                         Send Message
                     </button>
                 </form>
-            </div>
-        </section>
+        </div>
     );
 }
 

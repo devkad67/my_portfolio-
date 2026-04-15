@@ -42,8 +42,7 @@ function Skills() {
     const [ref, isVisible] = useScrollAnimation(0.1);
 
     return (
-        <div ref={ref} className={`${styles.skillsSection} ${isVisible ? styles.animateIn : ''}`}>
-            <div className={styles.skillsContainer}>
+        <div ref={ref} className={`${styles.skillsContainer} ${isVisible ? styles.animateIn : ''}`}>
                 <span className={styles.sectionTitle}>Skills & Expertise</span>
                 <h2 className={styles.sectionHeading}>Technologies I Work With</h2>
                 <p className={styles.sectionText}>
@@ -84,7 +83,6 @@ function Skills() {
                         </div>
                     ))}
                 </div>
-            </div>
         </div>
     );
 }

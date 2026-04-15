@@ -504,7 +504,7 @@
 
 /* Skills Section */
 .skillsSection {
-    padding: 8rem 0;
+    /* Padding removed - handled by App.jsx wrapper */
 }
 
 .skillsContainer {
@@ -514,7 +514,7 @@
 
 .skillCategories {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr));
     gap: 3rem;
     margin-top: 4rem;
 }
@@ -642,7 +642,7 @@
 
 /* Testimonials Section */
 .testimonialsSection {
-    padding: 8rem 0;
+    /* Padding removed - handled by App.jsx wrapper */
     background: var(--surface-strong);
 }
 
@@ -653,7 +653,7 @@
 
 .testimonialsGrid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr));
     gap: 2rem;
     margin-top: 4rem;
 }
@@ -746,7 +746,7 @@
 
 /* Projects Section */
 .projectsSection {
-    padding: 8rem 0;
+    /* Padding removed - handled by App.jsx wrapper */
 }
 
 .projectsHeader {
@@ -784,7 +784,7 @@
 
 .projectsGrid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 350px), 1fr));
     gap: 2rem;
 }
 
@@ -884,7 +884,7 @@
 
 /* Timeline */
 .timelineSection {
-    margin-top: 4rem;
+    /* Margin removed - handled by App.jsx wrapper consistency */
 }
 
 .timelineList {
