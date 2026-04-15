@@ -1,5 +1,5 @@
 import { useMemo } from 'react';
-import useScrollAnimation from '../hooks/useScrollAnimation.js';
+import useScrollAnimation from '../hooks/useScrollAnimation';
 import styles from '../App.module.css';
 
 const skillCategories = [
