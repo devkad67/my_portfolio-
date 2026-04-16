@@ -62,7 +62,7 @@ function Hero() {
                     <div className={styles.profileImage}>
                         {/* Placeholder for real image */}
                         <div className={styles.imageOverlay}></div>
-                        <div className={styles.placeholderIcon}>AM</div>
+                        <div className={styles.placeholderIcon}>KD</div>
                     </div>
                     <div className={styles.orbitPath}>
                         <div className={styles.orbitObject}></div>
