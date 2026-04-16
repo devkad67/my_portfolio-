@@ -559,6 +559,24 @@
     margin-bottom: 0.5rem;
 }
 
+.skillNameWrapper {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.skillIcon {
+    font-size: 1.25rem;
+    color: var(--accent);
+    display: flex;
+    align-items: center;
+    transition: transform 0.3s ease;
+}
+
+.skillItem:hover .skillIcon {
+    transform: scale(1.2) rotate(5deg);
+}
+
 .skillName {
     font-weight: 600;
     color: var(--text);

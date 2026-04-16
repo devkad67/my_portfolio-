@@ -1,4 +1,10 @@
 import { useMemo } from 'react';
+import { 
+    FaReact, FaNodeJs, FaJs, FaHtml5, FaVuejs, FaGitAlt, FaDocker, FaAws, FaSync, FaFigma, FaServer
+} from 'react-icons/fa';
+import { 
+    SiTypescript, SiNextdotjs, SiExpress, SiPostgresql, SiMongodb, SiGraphql, SiAdobe
+} from 'react-icons/si';
 import useScrollAnimation from '../hooks/useScrollAnimation';
 import styles from '../App.module.css';
 
@@ -6,34 +12,34 @@ const skillCategories = [
     {
         category: 'Frontend Development',
         skills: [
-            { name: 'React', level: 95 },
-            { name: 'TypeScript', level: 90 },
-            { name: 'JavaScript (ES6+)', level: 95 },
-            { name: 'HTML5 & CSS3', level: 95 },
-            { name: 'Next.js', level: 85 },
-            { name: 'Vue.js', level: 80 }
+            { name: 'React', level: 95, icon: <FaReact /> },
+            { name: 'TypeScript', level: 90, icon: <SiTypescript /> },
+            { name: 'JavaScript (ES6+)', level: 95, icon: <FaJs /> },
+            { name: 'HTML5 & CSS3', level: 95, icon: <FaHtml5 /> },
+            { name: 'Next.js', level: 85, icon: <SiNextdotjs /> },
+            { name: 'Vue.js', level: 80, icon: <FaVuejs /> }
         ]
     },
     {
         category: 'Backend & Database',
         skills: [
-            { name: 'Node.js', level: 90 },
-            { name: 'Express.js', level: 85 },
-            { name: 'PostgreSQL', level: 80 },
-            { name: 'MongoDB', level: 75 },
-            { name: 'GraphQL', level: 70 },
-            { name: 'REST APIs', level: 90 }
+            { name: 'Node.js', level: 90, icon: <FaNodeJs /> },
+            { name: 'Express.js', level: 85, icon: <SiExpress /> },
+            { name: 'PostgreSQL', level: 80, icon: <SiPostgresql /> },
+            { name: 'MongoDB', level: 75, icon: <SiMongodb /> },
+            { name: 'GraphQL', level: 70, icon: <SiGraphql /> },
+            { name: 'REST APIs', level: 90, icon: <FaServer /> }
         ]
     },
     {
         category: 'Tools & Technologies',
         skills: [
-            { name: 'Git & GitHub', level: 95 },
-            { name: 'Docker', level: 75 },
-            { name: 'AWS', level: 70 },
-            { name: 'CI/CD', level: 80 },
-            { name: 'Figma', level: 85 },
-            { name: 'Adobe Creative Suite', level: 80 }
+            { name: 'Git & GitHub', level: 95, icon: <FaGitAlt /> },
+            { name: 'Docker', level: 75, icon: <FaDocker /> },
+            { name: 'AWS', level: 70, icon: <FaAws /> },
+            { name: 'CI/CD', level: 80, icon: <FaSync /> },
+            { name: 'Figma', level: 85, icon: <FaFigma /> },
+            { name: 'Adobe Creative Suite', level: 80, icon: <SiAdobe /> }
         ]
     }
 ];
@@ -65,7 +71,10 @@ function Skills() {
                                         style={{ animationDelay: `${(index * 0.2) + (skillIndex * 0.1)}s` }}
                                     >
                                         <div className={styles.skillHeader}>
-                                            <span className={styles.skillName}>{skill.name}</span>
+                                            <div className={styles.skillNameWrapper}>
+                                                <span className={styles.skillIcon}>{skill.icon}</span>
+                                                <span className={styles.skillName}>{skill.name}</span>
+                                            </div>
                                             <span className={styles.skillLevel}>{skill.level}%</span>
                                         </div>
                                         <div className={styles.skillBar}>
